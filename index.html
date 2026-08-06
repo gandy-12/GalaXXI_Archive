@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <!-- ========================================= -->
+    <!-- GALAXXI ARCHIVE -->
+    <!-- Every Memory Has Its Place -->
+    <!-- ========================================= -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GalaXXI Archive</title>
+
+    <meta name="description"
+        content="GalaXXI Archive adalah galeri digital pribadi untuk menyimpan dan mengelola arsip foto dalam satu tempat yang rapi.">
+
+    <meta name="author" content="Gandy Ahmad Qusyairi">
+
+    <meta name="theme-color" content="#020617">
+
+    <!-- Open Graph -->
+
+    <meta property="og:title" content="GalaXXI Archive">
+
+    <meta property="og:description"
+        content="Every Memory Has Its Place.">
+
+    <meta property="og:type" content="website">
+
+    <meta property="og:image"
+        content="assets/logo/cover.jpg">
+
+    <!-- Favicon -->
+
+    <link rel="icon"
+        href="assets/logo/favicon.ico">
+
+    <!-- Google Font -->
+
+    <link rel="preconnect"
+        href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Lucide Icons -->
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- CSS -->
+
+    <link rel="stylesheet"
+        href="style.css">
+
+</head>
+
+<body>
+
+    <!-- ========================================= -->
+    <!-- LOADING SCREEN -->
+    <!-- ========================================= -->
+
+    <div id="loader">
+
+        <div class="loader-logo">
+
+            📸
+
+        </div>
+
+        <h1>
+
+            GalaXXI Archive
+
+        </h1>
+
+        <p>
+
+            Loading memories...
+
+        </p>
+
+    </div>
+
+    <!-- ========================================= -->
+    <!-- BACKGROUND -->
+    <!-- ========================================= -->
+
+    <div class="background">
+
+        <div class="aurora aurora-1"></div>
+
+        <div class="aurora aurora-2"></div>
+
+        <div class="aurora aurora-3"></div>
+
+        <div class="noise"></div>
+
+    </div>
+
+    <!-- ========================================= -->
+    <!-- NAVBAR -->
+    <!-- ========================================= -->
+
+    <header>
+
+        <nav class="navbar">
+
+            <a href="#"
+                class="logo">
+
+                <div class="logo-icon">
+
+                    <i data-lucide="images"></i>
+
+                </div>
+
+                <div class="logo-text">
+
+                    <h2>
+
+                        GalaXXI
+
+                    </h2>
+
+                    <span>
+
+                        Archive
+
+                    </span>
+
+                </div>
+
+            </a>
+
+            <div class="nav-right">
+
+                <button
+                    id="themeToggle"
+                    class="icon-button"
+                    aria-label="Dark Mode">
+
+                    <i data-lucide="moon-star"></i>
+
+                </button>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+    <!-- ========================================= -->
+    <!-- HERO -->
+    <!-- ========================================= -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <span class="hero-badge">
+
+                📷 Personal Photo Archive
+
+            </span>
+
+            <h1>
+
+                Every Memory
+
+                <br>
+
+                <span>
+
+                    Has Its Place.
+
+                </span>
+
+            </h1>
+
+            <p>
+
+                Simpan seluruh album Google Drive
+                dalam satu tempat yang elegan,
+                mudah dicari,
+                dan nyaman diakses kapan pun.
+
+            </p>
+
+            <div class="hero-buttons">
+
+                <a
+                    href="#albums"
+                    class="btn-primary">
+
+                    Jelajahi Album
+
+                </a>
+
+                <a
+                    href="#stats"
+                    class="btn-secondary">
+
+                    Lihat Statistik
+
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="hero-visual">
+
+            <div class="planet">
+
+                <div class="planet-ring"></div>
+
+                <div class="planet-glow"></div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- HERO ENDS HERE -->
+  <!-- ========================================= -->
+<!-- SEARCH -->
+<!-- ========================================= -->
+
+<section class="search-section">
+
+    <div class="search-wrapper">
+
+        <div class="search-box">
+
+            <i data-lucide="search"></i>
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Cari album...">
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- QUICK STATS -->
+<!-- ========================================= -->
+
+<section
+    id="stats"
+    class="stats-section">
+
+    <div class="stats-grid">
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+
+                <i data-lucide="folder-open"></i>
+
+            </div>
+
+            <div>
+
+                <h2
+                    id="albumCount">
+
+                    0
+
+                </h2>
+
+                <p>
+
+                    Album
+
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+
+                <i data-lucide="image"></i>
+
+            </div>
+
+            <div>
+
+                <h2
+                    id="photoCount">
+
+                    0
+
+                </h2>
+
+                <p>
+
+                    Total Foto
+
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+
+                <i data-lucide="cloud"></i>
+
+            </div>
+
+            <div>
+
+                <h2>
+
+                    Drive
+
+                </h2>
+
+                <p>
+
+                    Google Drive
+
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+
+                <i data-lucide="tag"></i>
+
+            </div>
+
+            <div>
+
+                <h2
+                    id="categoryCount">
+
+                    0
+
+                </h2>
+
+                <p>
+
+                    Kategori
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- CATEGORY -->
+<!-- ========================================= -->
+
+<section
+    class="category-section">
+
+    <div
+        class="category-wrapper">
+
+        <button
+            class="category active"
+            data-category="Semua">
+
+            Semua
+
+        </button>
+
+        <button
+            class="category"
+            data-category="Sekolah">
+
+            Sekolah
+
+        </button>
+
+        <button
+            class="category"
+            data-category="Teman">
+
+            Teman
+
+        </button>
+
+        <button
+            class="category"
+            data-category="Keluarga">
+
+            Keluarga
+
+        </button>
+
+        <button
+            class="category"
+            data-category="Event">
+
+            Event
+
+        </button>
+
+        <button
+            class="category"
+            data-category="Travel">
+
+            Travel
+
+        </button>
+
+        <button
+            class="category"
+            data-category="Lainnya">
+
+            Lainnya
+
+        </button>
+
+    </div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- ALBUM GRID -->
+<!-- ========================================= -->
+
+<main
+    id="albums"
+    class="main-content">
+
+    <section
+        id="albumContainer"
+        class="album-grid">
+
+    </section>
+
+</main>
+
+<!-- ========================================= -->
+<!-- TEMPLATE -->
+<!-- ========================================= -->
+
+<template
+    id="albumTemplate">
+
+    <article
+        class="album-card">
+
+        <div
+            class="album-cover">
+
+            <img
+                class="cover-image"
+                src=""
+                alt="Album Cover">
+
+            <div
+                class="cover-placeholder">
+
+                <i
+                    data-lucide="camera"></i>
+
+            </div>
+
+        </div>
+
+        <div
+            class="album-content">
+
+            <span
+                class="album-category">
+
+            </span>
+
+            <h3
+                class="album-title">
+
+            </h3>
+
+            <p
+                class="album-description">
+
+            </p>
+
+            <div
+                class="album-info">
+
+                <div>
+
+                    <i
+                        data-lucide="calendar-days"></i>
+
+                    <span
+                        class="album-date">
+
+                    </span>
+
+                </div>
+
+                <div>
+
+                    <i
+                        data-lucide="images"></i>
+
+                    <span
+                        class="album-total">
+
+                    </span>
+
+                </div>
+
+            </div>
+
+            <a
+                class="open-button"
+                target="_blank">
+
+                <span>
+
+                    Buka Album
+
+                </span>
+
+                <i
+                    data-lucide="arrow-up-right"></i>
+
+            </a>
+
+        </div>
+
+    </article>
+
+</template>
+
+<!-- PART 1B ENDS HERE -->
+      <!-- ========================================= -->
+    <!-- EMPTY STATE -->
+    <!-- ========================================= -->
+
+    <section
+        id="emptyState"
+        class="empty-state hidden">
+
+        <div class="empty-icon">
+
+            <i data-lucide="folder-search"></i>
+
+        </div>
+
+        <h2>
+
+            Album tidak ditemukan
+
+        </h2>
+
+        <p>
+
+            Coba gunakan kata kunci lain
+            atau pilih kategori yang berbeda.
+
+        </p>
+
+    </section>
+
+    <!-- ========================================= -->
+    <!-- BACK TO TOP -->
+    <!-- ========================================= -->
+
+    <button
+        id="backToTop"
+        class="back-to-top"
+        aria-label="Kembali ke atas">
+
+        <i data-lucide="arrow-up"></i>
+
+    </button>
+
+    <!-- ========================================= -->
+    <!-- SCROLL PROGRESS -->
+    <!-- ========================================= -->
+
+    <div
+        id="scrollProgress"
+        class="scroll-progress">
+
+    </div>
+
+    <!-- ========================================= -->
+    <!-- TOAST -->
+    <!-- ========================================= -->
+
+    <div
+        id="toast"
+        class="toast">
+
+        <i data-lucide="check-circle"></i>
+
+        <span>
+
+            Berhasil dibuka.
+
+        </span>
+
+    </div>
+
+    <!-- ========================================= -->
+    <!-- FOOTER -->
+    <!-- ========================================= -->
+
+    <footer
+        class="footer">
+
+        <div
+            class="footer-content">
+
+            <div
+                class="footer-brand">
+
+                <div
+                    class="footer-logo">
+
+                    <i
+                        data-lucide="images"></i>
+
+                </div>
+
+                <div>
+
+                    <h2>
+
+                        GalaXXI Archive
+
+                    </h2>
+
+                    <p>
+
+                        Every Memory Has Its Place.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div
+                class="footer-links">
+
+                <a href="#">
+
+                    Home
+
+                </a>
+
+                <a href="#albums">
+
+                    Album
+
+                </a>
+
+                <a href="#stats">
+
+                    Statistik
+
+                </a>
+
+            </div>
+
+        </div>
+
+        <div
+            class="footer-bottom">
+
+            <p>
+
+                © 2026 GalaXXI Archive
+
+            </p>
+
+            <span>
+
+                Made with ❤️ by Gandy
+
+            </span>
+
+        </div>
+
+    </footer>
+
+    <!-- ========================================= -->
+    <!-- JAVASCRIPT -->
+    <!-- ========================================= -->
+
+    <script src="albums.js"></script>
+
+    <script src="script.js"></script>
+
+    <script>
+
+        lucide.createIcons();
+
+    </script>
+
+</body>
+
+</html>
