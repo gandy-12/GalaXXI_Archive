@@ -37,22 +37,25 @@ const App = {
         INIT
     ==============================================*/
 
-    init() {
+   init() {
 
-        this.cacheDOM();
+    this.cacheDOM();
 
-        this.loadAlbums();
+    this.loadAlbums();
 
-        this.bindEvents();
+    this.renderCategories();
 
-        this.render();
+    this.bindEvents();
 
-        this.initObserver();
+    this.render();
 
-        this.hideLoader();
+    this.initObserver();
 
-        lucide.createIcons();
+    this.hideLoader();
 
+    lucide.createIcons();
+
+},
     },
 
     /*==============================================
@@ -734,7 +737,6 @@ document.addEventListener(
 
     ()=>{
 
-        App.renderCategories();
 
         App.init();
 
