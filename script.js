@@ -289,16 +289,16 @@ if(!this.dom.albumTemplate) return;
     ==============================================*/
 
     renderFeatured() {
-        if(!this.dom.featuredCover) return;
-
         let featured =
-            this.state.albums.find(album => album.featured);
+    this.state.filteredAlbums.find(
+        album => album.featured
+    );
 
-        if (!featured) {
+if (!featured) {
 
-            featured = this.state.albums[0];
+    featured = this.state.filteredAlbums[0];
 
-        }
+}
 
         if (!featured) return;
 
