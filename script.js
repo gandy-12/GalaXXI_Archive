@@ -56,7 +56,6 @@ const App = {
     lucide.createIcons();
 
 },
-    },
 
     /*==============================================
         CACHE DOM
@@ -138,8 +137,7 @@ const App = {
 
     loadAlbums() {
 
-        if (typeof albums === "undefined") {
-
+if (!Array.isArray(albums)) {
             console.error("albums.js belum ditemukan");
 
             return;
@@ -157,6 +155,7 @@ const App = {
     ==============================================*/
 
     render() {
+        this.renderCategories();
 
         this.renderAlbums();
 
@@ -192,8 +191,15 @@ const App = {
 
     showToast(message) {
 
-        this.dom.toast.querySelector("span").textContent = message;
+        if(!this.dom.toast) return;
 
+const text=this.dom.toast.querySelector("span");
+
+if(text){
+
+    text.textContent=message;
+
+}
         this.dom.toast.classList.add("show");
 
         clearTimeout(this.toastTimer);
@@ -221,6 +227,9 @@ const App = {
     ==============================================*/
 
     renderAlbums() {
+        if(!this.dom.albumContainer) return;
+
+if(!this.dom.albumTemplate) return;
 
         this.dom.albumContainer.innerHTML = "";
 
@@ -280,6 +289,7 @@ const App = {
     ==============================================*/
 
     renderFeatured() {
+        if(!this.dom.featuredCover) return;
 
         let featured =
             this.state.albums.find(album => album.featured);
@@ -320,6 +330,11 @@ const App = {
     ==============================================*/
 
     updateStatistics() {
+        if(this.state.albums.length===0){
+
+    return;
+
+}
 
         const totalAlbum =
             this.state.albums.length;
@@ -375,6 +390,11 @@ const App = {
     ==============================================*/
 
     updateMiniStats() {
+        if(this.state.albums.length===0){
+
+    return;
+
+}
 
         const totalPhoto =
             this.state.albums.reduce(
@@ -488,6 +508,7 @@ const App = {
         });
 
         this.renderAlbums();
+        this.renderFeatured();
 
     },
 
@@ -512,6 +533,11 @@ const App = {
             )
 
         ];
+        if(!this.dom.categoryWrapper){
+
+    return;
+
+}
 
         this.dom.categoryWrapper.innerHTML = "";
 
