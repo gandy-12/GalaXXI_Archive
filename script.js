@@ -53,7 +53,9 @@ const App = {
 
     this.hideLoader();
 
+    if (typeof lucide !== "undefined") {
     lucide.createIcons();
+}
 
 },
 
@@ -138,7 +140,9 @@ const App = {
     loadAlbums() {
 
 if (!Array.isArray(albums)) {
-            console.error("albums.js belum ditemukan");
+            console.error(
+                 "albums.js tidak ditemukan atau format datanya tidak valid."
+                );
 
             return;
 
@@ -176,6 +180,8 @@ if (!Array.isArray(albums)) {
         window.addEventListener("load", () => {
 
             setTimeout(() => {
+                if (this.dom.loader) {
+                }
 
                 this.dom.loader.classList.add("hide");
 
@@ -280,7 +286,9 @@ if(!this.dom.albumTemplate) return;
 
         });
 
-        lucide.createIcons();
+        if (typeof lucide !== "undefined") {
+    lucide.createIcons();
+}
 
     },
 
@@ -289,6 +297,7 @@ if(!this.dom.albumTemplate) return;
     ==============================================*/
 
     renderFeatured() {
+        if (!this.dom.featuredCover) return;
         let featured =
     this.state.filteredAlbums.find(
         album => album.featured
