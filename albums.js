@@ -15,24 +15,24 @@ const albums = [
     {
         id: 1,
 
-        title: "Nama Arsip Foto",
+        title: "Pergantian Pangkat",
 
-        category: "Sekolah",
+        category: "Angkatan",
 
         description:
-            "Deskripsi singkat mengenai arsip foto ini.",
+            "GalaXXI go to kompi 1.",
 
-        date: "8 Agustus 2026",
+        date: "29 July 2026",
 
         photos: 120,
 
         featured: true,
 
         cover:
-            "assets/covers/arsip-1.jpg",
+            "assets/covers/Pergantian Pangkat.jpg",
 
         link:
-            "https://drive.google.com/"
+            "https://drive.google.com/drive/folders/1Orukhi1sVJvXJdeMssnmhlyiwCBg1bLt?usp=sharing"
     },
 
 
