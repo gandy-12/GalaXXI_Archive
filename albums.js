@@ -35,7 +35,6 @@ const albums = [
             "https://drive.google.com/drive/folders/1Orukhi1sVJvXJdeMssnmhlyiwCBg1bLt?usp=sharing"
     },
 
-
     {
         id: 2,
 
@@ -57,28 +56,29 @@ const albums = [
 
         link:
             "https://drive.google.com/"
+    },
+
+    {
+        id: 3,
+
+        title: "Judul Arsip",
+
+        category: "Kategori",
+
+        description:
+            "Deskripsi singkat arsip foto.",
+
+        date: "Tanggal Arsip",
+
+        photos: 0,
+
+        featured: false,
+
+        cover:
+            "assets/covers/nama-cover.jpg",
+
+        link:
+            "https://drive.google.com/..."
     }
 
 ];
-{
-    id: 3,
-
-    title: "Judul Arsip",
-
-    category: "Kategori",
-
-    description:
-        "Deskripsi singkat arsip foto.",
-
-    date: "Tanggal Arsip",
-
-    photos: 0,
-
-    featured: false,
-
-    cover:
-        "assets/covers/nama-cover.jpg",
-
-    link:
-        "https://drive.google.com/..."
-},
