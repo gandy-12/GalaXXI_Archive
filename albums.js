@@ -34,14 +34,14 @@ const albums = [
 
     {
         id: 2,
-        title: "Arsip Foto Berikutnya",
-        category: "Kegiatan",
+        title: "Pelantikan OSIS & PMR 2026",
+        category: "Organisasi",
         description: "Dokumentasi kegiatan yang tersimpan di Google Drive.",
-        date: "10 Agustus 2026",
+        date: "11 Maret 2026",
         photos: 85,
         featured: false,
-        cover: "assets/covers/arsip-2.jpg",
-        link: "https://drive.google.com/"
+        cover: "assets/covers/Osis-PMR.jpg",
+        link: "https://drive.google.com/drive/folders/1SF6vQenVT4lPm-8XMi-XFTpG4g22OBia?usp=drive_link"
     },
 
     /*==============================================
@@ -50,14 +50,14 @@ const albums = [
 
     {
         id: 3,
-        title: "Judul Arsip",
-        category: "Kategori",
-        description: "Deskripsi singkat arsip foto.",
-        date: "Tanggal Arsip",
+        title: "Ramadhan GalaXXI",
+        category: "Angkatan",
+        description: "GalaXXI Last Ramadhan.",
+        date: "10 Maret 2026",
         photos: 0,
         featured: false,
-        cover: "assets/covers/nama-cover.jpg",
-        link: "https://drive.google.com/..."
+        cover: "assets/covers/Ramadhan.jpg",
+        link: "https://drive.google.com/drive/folders/1s4jPLm-2uRg-u4EU_L9U3NzckBrX_sQm?usp=drive_link"
     }
 
 ];
