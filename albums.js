@@ -40,7 +40,7 @@ const albums = [
         date: "11 Maret 2026",
         photos: 85,
         featured: false,
-        cover: "assets/covers/Osis-PMR.jpg",
+        cover: "assets/covers/Osis PMR.jpg",
         link: "https://drive.google.com/drive/folders/1SF6vQenVT4lPm-8XMi-XFTpG4g22OBia?usp=drive_link"
     },
 
