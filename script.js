@@ -47,6 +47,7 @@ const App = {
         this.dom.featuredDate = document.getElementById("featuredDate");
         this.dom.featuredPhotos = document.getElementById("featuredPhotos");
         this.dom.featuredLink = document.getElementById("featuredLink");
+        this.dom.driveStat = document.getElementById("driveStat");
         this.dom.albumCount = document.getElementById("albumCount");
         this.dom.photoCount = document.getElementById("photoCount");
         this.dom.categoryCount = document.getElementById("categoryCount");
@@ -164,10 +165,19 @@ const App = {
         if (this.dom.featuredDescription) this.dom.featuredDescription.textContent = featured.description;
         if (this.dom.featuredDate) this.dom.featuredDate.textContent = featured.date;
         if (this.dom.featuredPhotos) this.dom.featuredPhotos.textContent = `${this.format(featured.photos)} Foto`;
+
         if (this.dom.featuredLink) {
             this.dom.featuredLink.href = featured.link;
             this.dom.featuredLink.target = "_blank";
             this.dom.featuredLink.rel = "noopener noreferrer";
+        }
+
+        // Kartu Google Drive di statistik mengarah ke album featured.
+        if (this.dom.driveStat) {
+            this.dom.driveStat.href = featured.link;
+            this.dom.driveStat.target = "_blank";
+            this.dom.driveStat.rel = "noopener noreferrer";
+            this.dom.driveStat.title = `Buka Google Drive: ${featured.title}`;
         }
     },
 
