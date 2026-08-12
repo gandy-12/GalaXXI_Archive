@@ -172,12 +172,13 @@ const App = {
             this.dom.featuredLink.rel = "noopener noreferrer";
         }
 
-        // Kartu Google Drive di statistik mengarah ke album featured.
+        // Kartu Google Drive mengarah ke arsip Featured.
         if (this.dom.driveStat) {
             this.dom.driveStat.href = featured.link;
             this.dom.driveStat.target = "_blank";
             this.dom.driveStat.rel = "noopener noreferrer";
             this.dom.driveStat.title = `Buka Google Drive: ${featured.title}`;
+            this.dom.driveStat.style.cursor = "pointer";
         }
     },
 
