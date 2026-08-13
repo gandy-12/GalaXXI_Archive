@@ -1,6 +1,6 @@
 /*==================================================
     GalaXXI Archive
-    Version 1.3
+    Version 1.4
 ==================================================*/
 
 "use strict";
@@ -13,6 +13,11 @@ const App = {
         currentCategory: "Semua",
         keyword: ""
     },
+
+    /* Total Foto adalah indikator arsip, bukan jumlah matematis
+       dari field photos tiap album. Album tetap bisa memiliki
+       jumlah foto normal tanpa harus unlimited. */
+    totalPhotosUnlimited: true,
 
     dom: {},
 
@@ -104,10 +109,6 @@ const App = {
 
     getPhotoLabel(album) {
         return album?.unlimited ? "∞ Foto" : `${this.format(Number(album?.photos || 0))} Foto`;
-    },
-
-    hasUnlimitedAlbum() {
-        return this.state.albums.some(album => album.unlimited === true);
     },
 
     getAlbumCovers(album) {
@@ -256,16 +257,11 @@ const App = {
         const totalAlbum = this.state.albums.length;
         const totalPhoto = this.state.albums.reduce((sum, album) => sum + Number(album.photos || 0), 0);
         const categories = new Set(this.state.albums.map(album => album.category));
-        const unlimited = this.hasUnlimitedAlbum();
 
         this.animateCounter(this.dom.albumCount, totalAlbum);
 
         if (this.dom.photoCount) {
-            if (unlimited) {
-                this.dom.photoCount.textContent = "∞";
-            } else {
-                this.animateCounter(this.dom.photoCount, totalPhoto);
-            }
+            this.dom.photoCount.textContent = this.totalPhotosUnlimited ? "∞" : this.format(totalPhoto);
         }
 
         this.animateCounter(this.dom.categoryCount, categories.size);
@@ -276,16 +272,11 @@ const App = {
 
         const totalPhoto = this.state.albums.reduce((sum, album) => sum + Number(album.photos || 0), 0);
         const totalCategory = new Set(this.state.albums.map(album => album.category)).size;
-        const unlimited = this.hasUnlimitedAlbum();
 
         this.animateCounter(this.dom.miniAlbum, this.state.albums.length);
 
         if (this.dom.miniPhoto) {
-            if (unlimited) {
-                this.dom.miniPhoto.textContent = "∞";
-            } else {
-                this.animateCounter(this.dom.miniPhoto, totalPhoto);
-            }
+            this.dom.miniPhoto.textContent = this.totalPhotosUnlimited ? "∞" : this.format(totalPhoto);
         }
 
         this.animateCounter(this.dom.miniCategory, totalCategory);
@@ -387,10 +378,6 @@ const App = {
             this.state.currentCategory = button.dataset.category;
             this.filterAlbums();
         });
-
-        /*==============================================
-            ALBUM STAT CARD → ALBUM LIST
-        ==============================================*/
 
         const goToAlbumList = event => {
             event?.preventDefault();
