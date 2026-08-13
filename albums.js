@@ -84,7 +84,6 @@ const albums = [
 
     /*==============================================
         ALBUM 04
-        SLOT SIAP DIISI
     ==============================================*/
 
     {
@@ -93,15 +92,16 @@ const albums = [
         category: "Angkatan",
         description: "One of GalaXXI's best moments..",
         date: "7-9 November 2025",
-        photos: ∞,
+        photos: 0,
         featured: false,
 
         cover: "assets/covers/pramuka a.JPG",
 
         covers: [
-            "assets/covers/pramuka b.JPG"
-            "assets/covers/pramuka c.JPG"
-            "assets/covers/pramuka d.JPG"
+            "assets/covers/pramuka a.JPG",
+            "assets/covers/pramuka b.JPG",
+            "assets/covers/pramuka c.JPG",
+            "assets/covers/pramuka d.JPG",
             "assets/covers/pramuka e.JPG"
         ],
 
