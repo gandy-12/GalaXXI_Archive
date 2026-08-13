@@ -1,6 +1,6 @@
 /*==================================================
     GalaXXI Archive
-    Version 1.0
+    Version 1.1
 ==================================================*/
 
 "use strict";
@@ -102,6 +102,14 @@ const App = {
         return new Intl.NumberFormat("id-ID").format(number);
     },
 
+    getAlbumCovers(album) {
+        if (Array.isArray(album.covers) && album.covers.length > 0) {
+            return album.covers;
+        }
+
+        return album.cover ? [album.cover] : [];
+    },
+
     renderAlbums() {
         if (!this.dom.albumContainer || !this.dom.albumTemplate) return;
 
@@ -124,11 +132,22 @@ const App = {
             const date = clone.querySelector(".album-date");
             const photoCount = clone.querySelector(".album-total");
             const button = clone.querySelector(".open-button");
+            const coverBox = clone.querySelector(".album-cover");
+            const prevButton = clone.querySelector(".cover-prev");
+            const nextButton = clone.querySelector(".cover-next");
 
-            if (cover) {
-                cover.src = album.cover;
-                cover.alt = album.title;
-            }
+            const covers = this.getAlbumCovers(album);
+            let currentIndex = 0;
+
+            const showCover = index => {
+                if (!cover || covers.length === 0) return;
+
+                currentIndex = (index + covers.length) % covers.length;
+                cover.src = covers[currentIndex];
+                cover.alt = `${album.title} - Foto ${currentIndex + 1}`;
+            };
+
+            showCover(0);
 
             if (title) title.textContent = album.title;
             if (description) description.textContent = album.description;
@@ -140,6 +159,48 @@ const App = {
                 button.href = album.link;
                 button.target = "_blank";
                 button.rel = "noopener noreferrer";
+            }
+
+            if (covers.length <= 1) {
+                prevButton?.classList.add("hidden-cover-control");
+                nextButton?.classList.add("hidden-cover-control");
+            }
+
+            prevButton?.addEventListener("click", event => {
+                event.preventDefault();
+                event.stopPropagation();
+                showCover(currentIndex - 1);
+            });
+
+            nextButton?.addEventListener("click", event => {
+                event.preventDefault();
+                event.stopPropagation();
+                showCover(currentIndex + 1);
+            });
+
+            if (coverBox && covers.length > 1) {
+                let startX = 0;
+                let startY = 0;
+
+                coverBox.addEventListener("touchstart", event => {
+                    const touch = event.changedTouches[0];
+                    startX = touch.clientX;
+                    startY = touch.clientY;
+                }, { passive: true });
+
+                coverBox.addEventListener("touchend", event => {
+                    const touch = event.changedTouches[0];
+                    const deltaX = touch.clientX - startX;
+                    const deltaY = touch.clientY - startY;
+
+                    if (Math.abs(deltaX) > 45 && Math.abs(deltaX) > Math.abs(deltaY)) {
+                        showCover(currentIndex + (deltaX < 0 ? 1 : -1));
+                    }
+                }, { passive: true });
+
+                coverBox.addEventListener("dragstart", event => {
+                    event.preventDefault();
+                });
             }
 
             this.dom.albumContainer.appendChild(clone);
@@ -172,7 +233,6 @@ const App = {
             this.dom.featuredLink.rel = "noopener noreferrer";
         }
 
-        // Kartu Google Drive mengarah ke arsip Featured.
         if (this.dom.driveStat) {
             this.dom.driveStat.href = featured.link;
             this.dom.driveStat.target = "_blank";
