@@ -1,6 +1,6 @@
 /*==================================================
     GalaXXI Archive
-    Version 1.2
+    Version 1.3
 ==================================================*/
 
 "use strict";
@@ -102,6 +102,14 @@ const App = {
         return new Intl.NumberFormat("id-ID").format(number);
     },
 
+    getPhotoLabel(album) {
+        return album?.unlimited ? "∞ Foto" : `${this.format(Number(album?.photos || 0))} Foto`;
+    },
+
+    hasUnlimitedAlbum() {
+        return this.state.albums.some(album => album.unlimited === true);
+    },
+
     getAlbumCovers(album) {
         if (Array.isArray(album.covers) && album.covers.length > 0) {
             return album.covers;
@@ -153,7 +161,7 @@ const App = {
             if (description) description.textContent = album.description;
             if (category) category.textContent = album.category;
             if (date) date.textContent = album.date;
-            if (photoCount) photoCount.textContent = `${this.format(album.photos)} Foto`;
+            if (photoCount) photoCount.textContent = this.getPhotoLabel(album);
 
             if (button) {
                 button.href = album.link;
@@ -225,7 +233,7 @@ const App = {
         if (this.dom.featuredTitle) this.dom.featuredTitle.textContent = featured.title;
         if (this.dom.featuredDescription) this.dom.featuredDescription.textContent = featured.description;
         if (this.dom.featuredDate) this.dom.featuredDate.textContent = featured.date;
-        if (this.dom.featuredPhotos) this.dom.featuredPhotos.textContent = `${this.format(featured.photos)} Foto`;
+        if (this.dom.featuredPhotos) this.dom.featuredPhotos.textContent = this.getPhotoLabel(featured);
 
         if (this.dom.featuredLink) {
             this.dom.featuredLink.href = featured.link;
@@ -248,9 +256,18 @@ const App = {
         const totalAlbum = this.state.albums.length;
         const totalPhoto = this.state.albums.reduce((sum, album) => sum + Number(album.photos || 0), 0);
         const categories = new Set(this.state.albums.map(album => album.category));
+        const unlimited = this.hasUnlimitedAlbum();
 
         this.animateCounter(this.dom.albumCount, totalAlbum);
-        this.animateCounter(this.dom.photoCount, totalPhoto);
+
+        if (this.dom.photoCount) {
+            if (unlimited) {
+                this.dom.photoCount.textContent = "∞";
+            } else {
+                this.animateCounter(this.dom.photoCount, totalPhoto);
+            }
+        }
+
         this.animateCounter(this.dom.categoryCount, categories.size);
     },
 
@@ -259,9 +276,18 @@ const App = {
 
         const totalPhoto = this.state.albums.reduce((sum, album) => sum + Number(album.photos || 0), 0);
         const totalCategory = new Set(this.state.albums.map(album => album.category)).size;
+        const unlimited = this.hasUnlimitedAlbum();
 
         this.animateCounter(this.dom.miniAlbum, this.state.albums.length);
-        this.animateCounter(this.dom.miniPhoto, totalPhoto);
+
+        if (this.dom.miniPhoto) {
+            if (unlimited) {
+                this.dom.miniPhoto.textContent = "∞";
+            } else {
+                this.animateCounter(this.dom.miniPhoto, totalPhoto);
+            }
+        }
+
         this.animateCounter(this.dom.miniCategory, totalCategory);
     },
 
