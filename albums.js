@@ -96,7 +96,7 @@ const albums = [
         description: "One of GalaXXI's best moments..",
         date: "7-9 November 2025",
         photos: 0,
-        unlimited: true,
+        unlimited: false,
         featured: false,
 
         cover: "assets/covers/pramuka a.JPG",
