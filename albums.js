@@ -89,20 +89,23 @@ const albums = [
 
     {
         id: 4,
-        title: "Judul Album 04",
-        category: "Kategori",
-        description: "Deskripsi album 04.",
-        date: "Tanggal",
-        photos: 0,
+        title: "GalaXXi Camping (1)",
+        category: "Angkatan",
+        description: "One of GalaXXI's best moments..",
+        date: "7-9 November 2025",
+        photos: ∞,
         featured: false,
 
-        cover: "assets/covers/album-04.jpg",
+        cover: "assets/covers/pramuka a.JPG",
 
         covers: [
-            "assets/covers/album-04.jpg"
+            "assets/covers/pramuka b.JPG"
+            "assets/covers/pramuka c.JPG"
+            "assets/covers/pramuka d.JPG"
+            "assets/covers/pramuka e.JPG"
         ],
 
-        link: "https://drive.google.com/"
+        link: "https://drive.google.com/drive/folders/1Bz7MBLhcFSi5iSd5wRbcZRw1yV_I3_96?usp=drive_link"
     },
 
     /*==============================================
