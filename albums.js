@@ -88,7 +88,7 @@ const albums = [
 
     {
         id: 4,
-        title: "GalaXXi Camping (1)",
+        title: "GalaXXI Camping Part 1",
         category: "Angkatan",
         description: "One of GalaXXI's best moments..",
         date: "7-9 November 2025",
@@ -115,20 +115,23 @@ const albums = [
 
     {
         id: 5,
-        title: "Judul Album 05",
-        category: "Kategori",
-        description: "Deskripsi album 05.",
-        date: "Tanggal",
+        title: "GalaXXI Camping Part 2",
+        category: "Angkatan",
+        description: "GalaXXI is organizing the camping trip..",
+        date: "7-9 November 2025",
         photos: 0,
         featured: false,
 
-        cover: "assets/covers/album-05.jpg",
+        cover: "assets/covers/pr a.JPG",
 
         covers: [
-            "assets/covers/album-05.jpg"
+            "assets/covers/pr a.JPG",
+             "assets/covers/pr b.JPG",
+             "assets/covers/pr c.JPG",
+             "assets/covers/pr d.JPG",
         ],
 
-        link: "https://drive.google.com/"
+        link: "https://drive.google.com/drive/folders/1CJGuYq175tQG0n3_fdAXaTNOd3nNGfCe?usp=drive_link"
     },
 
     /*==============================================
@@ -138,20 +141,24 @@ const albums = [
 
     {
         id: 6,
-        title: "Judul Album 06",
-        category: "Kategori",
-        description: "Deskripsi album 06.",
-        date: "Tanggal",
+        title: "Behind The Scene Camping GalaXXI",
+        category: "Angkatan",
+        description: "Behind the scenes of the most spectacular GalaXXI event..",
+        date: "November 2K25",
         photos: 0,
         featured: false,
 
-        cover: "assets/covers/album-06.jpg",
+        cover: "assets/covers/bts 1.JPG",
 
         covers: [
-            "assets/covers/album-06.jpg"
+            "assets/covers/bts 1.JPG",
+            "assets/covers/bts 2.JPG",
+            "assets/covers/bts 3.JPG",
+            "assets/covers/bts 4.JPG",
+            "assets/covers/bts 5.JPG",
         ],
 
-        link: "https://drive.google.com/"
+        link: "https://drive.google.com/drive/folders/1Nx5mXzFnwk3QPumpugaf4ysqUMCuzsyw?usp=drive_link"
     }
 
 ];
