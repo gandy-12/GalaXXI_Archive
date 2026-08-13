@@ -80,6 +80,75 @@ const albums = [
         ],
 
         link: "https://drive.google.com/drive/folders/1s4jPLm-2uRg-u4EU_L9U3NzckBrX_sQm?usp=drive_link"
+    },
+
+    /*==============================================
+        ALBUM 04
+        SLOT SIAP DIISI
+    ==============================================*/
+
+    {
+        id: 4,
+        title: "Judul Album 04",
+        category: "Kategori",
+        description: "Deskripsi album 04.",
+        date: "Tanggal",
+        photos: 0,
+        featured: false,
+
+        cover: "assets/covers/album-04.jpg",
+
+        covers: [
+            "assets/covers/album-04.jpg"
+        ],
+
+        link: "https://drive.google.com/"
+    },
+
+    /*==============================================
+        ALBUM 05
+        SLOT SIAP DIISI
+    ==============================================*/
+
+    {
+        id: 5,
+        title: "Judul Album 05",
+        category: "Kategori",
+        description: "Deskripsi album 05.",
+        date: "Tanggal",
+        photos: 0,
+        featured: false,
+
+        cover: "assets/covers/album-05.jpg",
+
+        covers: [
+            "assets/covers/album-05.jpg"
+        ],
+
+        link: "https://drive.google.com/"
+    },
+
+    /*==============================================
+        ALBUM 06
+        SLOT SIAP DIISI
+    ==============================================*/
+
+    {
+        id: 6,
+        title: "Judul Album 06",
+        category: "Kategori",
+        description: "Deskripsi album 06.",
+        date: "Tanggal",
+        photos: 0,
+        featured: false,
+
+        cover: "assets/covers/album-06.jpg",
+
+        covers: [
+            "assets/covers/album-06.jpg"
+        ],
+
+        link: "https://drive.google.com/"
     }
 
 ];
