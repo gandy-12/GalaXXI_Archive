@@ -163,9 +163,9 @@ const albums = [
         ],
 
         link: "https://drive.google.com/drive/folders/1Nx5mXzFnwk3QPumpugaf4ysqUMCuzsyw?usp=drive_link"
-    }
+    },
 
-        /*==============================================
+    /*==============================================
         ALBUM 07
     ==============================================*/
 
