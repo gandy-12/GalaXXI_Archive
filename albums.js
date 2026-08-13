@@ -1,7 +1,7 @@
 /*==================================================
     GalaXXI Archive
     Album Database
-    Version 1.1
+    Version 1.2
 ==================================================*/
 
 "use strict";
@@ -11,7 +11,7 @@
 
     Setiap album bisa memiliki beberapa cover.
     Cover pertama akan menjadi thumbnail awal.
-    Tambahkan foto berikutnya ke array "covers".
+    Jika unlimited = true, jumlah foto ditampilkan sebagai ∞.
 ==================================================*/
 
 const albums = [
@@ -27,6 +27,7 @@ const albums = [
         description: "GalaXXI go to kompi 1.",
         date: "29 July 2026",
         photos: 120,
+        unlimited: false,
         featured: true,
 
         cover: "assets/covers/Pergantian Pangkat.jpg",
@@ -49,6 +50,7 @@ const albums = [
         description: "Dokumentasi kegiatan yang tersimpan di Google Drive.",
         date: "11 Maret 2026",
         photos: 85,
+        unlimited: false,
         featured: false,
 
         cover: "assets/covers/Osis PMR.JPG",
@@ -71,6 +73,7 @@ const albums = [
         description: "GalaXXI Last Ramadhan.",
         date: "10 Maret 2026",
         photos: 0,
+        unlimited: false,
         featured: false,
 
         cover: "assets/covers/Ramadhan.jpg",
@@ -93,6 +96,7 @@ const albums = [
         description: "One of GalaXXI's best moments..",
         date: "7-9 November 2025",
         photos: 0,
+        unlimited: true,
         featured: false,
 
         cover: "assets/covers/pramuka a.JPG",
@@ -110,7 +114,6 @@ const albums = [
 
     /*==============================================
         ALBUM 05
-        SLOT SIAP DIISI
     ==============================================*/
 
     {
@@ -120,15 +123,16 @@ const albums = [
         description: "GalaXXI is organizing the camping trip..",
         date: "7-9 November 2025",
         photos: 0,
+        unlimited: false,
         featured: false,
 
         cover: "assets/covers/pr a.JPG",
 
         covers: [
             "assets/covers/pr a.JPG",
-             "assets/covers/pr b.JPG",
-             "assets/covers/pr c.JPG",
-             "assets/covers/pr d.JPG",
+            "assets/covers/pr b.JPG",
+            "assets/covers/pr c.JPG",
+            "assets/covers/pr d.JPG"
         ],
 
         link: "https://drive.google.com/drive/folders/1CJGuYq175tQG0n3_fdAXaTNOd3nNGfCe?usp=drive_link"
@@ -136,7 +140,6 @@ const albums = [
 
     /*==============================================
         ALBUM 06
-        SLOT SIAP DIISI
     ==============================================*/
 
     {
@@ -146,6 +149,7 @@ const albums = [
         description: "Behind the scenes of the most spectacular GalaXXI event..",
         date: "November 2K25",
         photos: 0,
+        unlimited: false,
         featured: false,
 
         cover: "assets/covers/bts 1.JPG",
@@ -155,7 +159,7 @@ const albums = [
             "assets/covers/bts 2.JPG",
             "assets/covers/bts 3.JPG",
             "assets/covers/bts 4.JPG",
-            "assets/covers/bts 5.JPG",
+            "assets/covers/bts 5.JPG"
         ],
 
         link: "https://drive.google.com/drive/folders/1Nx5mXzFnwk3QPumpugaf4ysqUMCuzsyw?usp=drive_link"
