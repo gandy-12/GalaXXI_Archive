@@ -1,6 +1,6 @@
 /*==================================================
     GalaXXI Archive
-    Version 1.1
+    Version 1.2
 ==================================================*/
 
 "use strict";
@@ -360,6 +360,51 @@ const App = {
             button.classList.add("active");
             this.state.currentCategory = button.dataset.category;
             this.filterAlbums();
+        });
+
+        /*==============================================
+            ALBUM STAT CARD → ALBUM LIST
+        ==============================================*/
+
+        const goToAlbumList = event => {
+            event?.preventDefault();
+
+            const albumSection = document.getElementById("albums");
+            if (!albumSection) return;
+
+            albumSection.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+
+            setTimeout(() => {
+                const firstAlbum = albumSection.querySelector(".album-card");
+                firstAlbum?.classList.add("album-focus");
+
+                setTimeout(() => {
+                    firstAlbum?.classList.remove("album-focus");
+                }, 900);
+            }, 500);
+        };
+
+        const albumStat = this.dom.albumCount?.closest(".stat-card");
+        const miniAlbumCard = this.dom.miniAlbum?.closest(".mini-card");
+
+        [albumStat, miniAlbumCard].forEach(card => {
+            if (!card) return;
+
+            card.style.cursor = "pointer";
+            card.setAttribute("role", "button");
+            card.setAttribute("tabindex", "0");
+            card.setAttribute("aria-label", "Lihat daftar album");
+
+            card.addEventListener("click", goToAlbumList);
+
+            card.addEventListener("keydown", event => {
+                if (event.key === "Enter" || event.key === " ") {
+                    goToAlbumList(event);
+                }
+            });
         });
 
         this.dom.themeToggle?.addEventListener("click", () => {
