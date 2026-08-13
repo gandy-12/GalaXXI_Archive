@@ -1,13 +1,17 @@
 /*==================================================
     GalaXXI Archive
     Album Database
-    Version 1.0
+    Version 1.1
 ==================================================*/
 
 "use strict";
 
 /*==================================================
     ALBUM DATA
+
+    Setiap album bisa memiliki beberapa cover.
+    Cover pertama akan menjadi thumbnail awal.
+    Tambahkan foto berikutnya ke array "covers".
 ==================================================*/
 
 const albums = [
@@ -24,7 +28,13 @@ const albums = [
         date: "29 July 2026",
         photos: 120,
         featured: true,
+
         cover: "assets/covers/Pergantian Pangkat.jpg",
+
+        covers: [
+            "assets/covers/Pergantian Pangkat.jpg"
+        ],
+
         link: "https://drive.google.com/drive/folders/1Orukhi1sVJvXJdeMssnmhlyiwCBg1bLt?usp=sharing"
     },
 
@@ -40,7 +50,13 @@ const albums = [
         date: "11 Maret 2026",
         photos: 85,
         featured: false,
-        cover: "assets/covers/Osis PMR.jpg",
+
+        cover: "assets/covers/Osis PMR.JPG",
+
+        covers: [
+            "assets/covers/Osis PMR.JPG"
+        ],
+
         link: "https://drive.google.com/drive/folders/1SF6vQenVT4lPm-8XMi-XFTpG4g22OBia?usp=drive_link"
     },
 
@@ -56,7 +72,13 @@ const albums = [
         date: "10 Maret 2026",
         photos: 0,
         featured: false,
+
         cover: "assets/covers/Ramadhan.jpg",
+
+        covers: [
+            "assets/covers/Ramadhan.jpg"
+        ],
+
         link: "https://drive.google.com/drive/folders/1s4jPLm-2uRg-u4EU_L9U3NzckBrX_sQm?usp=drive_link"
     }
 
