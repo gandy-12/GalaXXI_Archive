@@ -182,13 +182,13 @@ const albums = [
         cover: "assets/covers/pps 1.JPG",
 
         covers: [
-            "assets/covers/pps 1.jpg",
-            "assets/covers/pps 2.jpg",
-            "assets/covers/pps 3.jpg",
-            "assets/covers/pps 4.jpg",
-            "assets/covers/pps 5.jpg",
-            "assets/covers/pps 6.jpg",
-            "assets/covers/pps 7.jpg"
+            "assets/covers/pps 1.JPG",
+            "assets/covers/pps 2.JPG",
+            "assets/covers/pps 3.JPG",
+            "assets/covers/pps 4.JPG",
+            "assets/covers/pps 5.JPG",
+            "assets/covers/pps 6.JPG",
+            "assets/covers/pps 7.JPG"
         ],
 
         link: "https://drive.google.com/drive/folders/1Nx5mXzFnwk3QPumpugaf4ysqUMCuzsyw?usp=drive_link"
