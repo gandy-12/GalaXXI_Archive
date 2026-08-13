@@ -155,11 +155,40 @@ const albums = [
         cover: "assets/covers/bts 1.JPG",
 
         covers: [
-            "assets/covers/bts 1.jpg",
-            "assets/covers/bts 2.jpg",
-            "assets/covers/bts 3.jpg",
-            "assets/covers/bts 4.jpg",
-            "assets/covers/bts 5.jpg"
+            "assets/covers/bts 1 .jpg",
+            "assets/covers/bts 2 .jpg",
+            "assets/covers/bts 3 .jpg",
+            "assets/covers/bts 4 .jpg",
+            "assets/covers/bts 5 .jpg"
+        ],
+
+        link: "https://drive.google.com/drive/folders/1Nx5mXzFnwk3QPumpugaf4ysqUMCuzsyw?usp=drive_link"
+    }
+
+        /*==============================================
+        ALBUM 07
+    ==============================================*/
+
+    {
+        id: 7,
+        title: "GalaXXI at perpisahan AleXXander",
+        category: "Angkatan",
+        description: "GalaXXI last time with AC'20",
+        date: "24 Mei 2026",
+        photos: 0,
+        unlimited: false,
+        featured: false,
+
+        cover: "assets/covers/pps 1.JPG",
+
+        covers: [
+            "assets/covers/pps 1.jpg",
+            "assets/covers/pps 2.jpg",
+            "assets/covers/pps 3.jpg",
+            "assets/covers/pps 4.jpg",
+            "assets/covers/pps 5.jpg",
+            "assets/covers/pps 6.jpg",
+            "assets/covers/pps 7.jpg"
         ],
 
         link: "https://drive.google.com/drive/folders/1Nx5mXzFnwk3QPumpugaf4ysqUMCuzsyw?usp=drive_link"
