@@ -168,7 +168,7 @@ const albums = [
     {
         id: 8,
         title: "GalaXXI P5; Market Day",
-        category: "Angkatan",
+        category: "Sekolah",
         description: "Themost unexpected actifity.",
         date: "15 Juni 2026",
         photos: 0,
@@ -184,6 +184,28 @@ const albums = [
             "assets/covers/p56.JPG"
         ],
         link: "https://drive.google.com/drive/folders/1ljKpjsU-VhX9kZTTGqYlCD9e0JxYH5Ay?usp=sharing"
+    },
+     /*==============================================
+        ALBUM 09
+    ==============================================*/
+    {
+        id: 9,
+        title: "Before Cendekia's Pawai",
+        category: "Sekolah",
+        description: "Asal usul foto keren pawai cende.",
+        date: "13 Agustus 2026",
+        photos: 0,
+        unlimited: false,
+        featured: false,
+        cover: "assets/covers/pw1.JPG",
+        covers: [
+            "assets/covers/pw1.JPG",
+            "assets/covers/pw2.JPG",
+            "assets/covers/pw3.JPG",
+            "assets/covers/pw4.JPG",
+            "assets/covers/pw5.JPG"
+        ],
+        link: "https://drive.google.com/drive/folders/1JdO2LUDSLTzUWUpYyXo09fJyhpodp6l8?usp=sharing"
     }
 
 ];
