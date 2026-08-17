@@ -1,6 +1,6 @@
 /*==================================================
     GalaXXI Archive
-    Version 1.6
+    Version 1.6.1
 ==================================================*/
 
 "use strict";
@@ -61,8 +61,10 @@ const App = {
     },
 
     loadAlbums() {
-        if (!Array.isArray(albums)) {
+        if (typeof albums === "undefined" || !Array.isArray(albums)) {
             console.error("albums.js tidak ditemukan atau format datanya tidak valid.");
+            this.state.albums = [];
+            this.state.filteredAlbums = [];
             return;
         }
         this.state.albums = [...albums];
