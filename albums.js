@@ -217,7 +217,7 @@ const albums = [
             "assets/covers/p56.JPG"
         ],
 
-        link: "https://drive.google.com/drive/folders/1Nx5mXzFnwk3QPumpugaf4ysqUMCuzsyw?usp=drive_link"
+        link: "https://drive.google.com/drive/folders/1ljKpjsU-VhX9kZTTGqYlCD9e0JxYH5Ay?usp=sharing"
     }
 
 ];
