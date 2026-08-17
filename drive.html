@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GalaXXI Archive • Google Drive</title>
+    <meta name="theme-color" content="#020617">
+    <link rel="icon" href="assets/logo/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .drive-page { max-width: 1100px; margin: 0 auto; padding: 90px 24px 100px; }
+        .drive-head { margin-bottom: 38px; }
+        .drive-head .section-badge { display: inline-flex; margin-bottom: 16px; }
+        .drive-head h1 { font-size: clamp(2.3rem, 5vw, 4.2rem); margin: 0 0 14px; letter-spacing: -0.04em; }
+        .drive-head h1 span { color: #8b9cff; }
+        .drive-head p { max-width: 700px; color: #94a3b8; line-height: 1.8; margin: 0; }
+        .drive-list { display: grid; gap: 16px; }
+        .drive-item { display: flex; align-items: center; justify-content: space-between; gap: 22px; padding: 22px 24px; border: 1px solid rgba(148,163,184,.16); border-radius: 22px; background: rgba(15,23,42,.72); backdrop-filter: blur(18px); transition: transform .2s ease, border-color .2s ease, background .2s ease; }
+        .drive-item:hover { transform: translateY(-2px); border-color: rgba(129,140,248,.45); background: rgba(30,41,59,.82); }
+        .drive-number { flex: 0 0 48px; width: 48px; height: 48px; border-radius: 15px; display: grid; place-items: center; background: linear-gradient(135deg,#60a5fa,#a78bfa); color: white; font-weight: 800; }
+        .drive-info { min-width: 0; flex: 1; }
+        .drive-info h2 { font-size: 1.05rem; margin: 0 0 7px; color: #f8fafc; }
+        .drive-info p { margin: 0; color: #94a3b8; font-size: .88rem; }
+        .drive-open { flex: 0 0 auto; display: inline-flex; align-items: center; gap: 9px; padding: 12px 17px; border-radius: 14px; text-decoration: none; color: white; font-weight: 700; background: linear-gradient(135deg,#60a5fa,#a78bfa); }
+        .drive-open svg { width: 17px; height: 17px; }
+        .drive-back { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 34px; color: #cbd5e1; text-decoration: none; }
+        .drive-back:hover { color: white; }
+        .drive-empty { color: #94a3b8; text-align: center; padding: 50px; }
+        @media (max-width: 650px) {
+            .drive-page { padding-top: 55px; }
+            .drive-item { align-items: flex-start; }
+            .drive-open { padding: 10px 12px; font-size: .85rem; }
+            .drive-number { flex-basis: 42px; width: 42px; height: 42px; }
+        }
+        @media (max-width: 520px) {
+            .drive-item { display: grid; grid-template-columns: 42px 1fr; }
+            .drive-open { grid-column: 1 / -1; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+    <div class="background">
+        <div class="aurora aurora-1"></div>
+        <div class="aurora aurora-2"></div>
+        <div class="aurora aurora-3"></div>
+        <div class="noise"></div>
+    </div>
+
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">
+                <div class="logo-icon"><i data-lucide="images"></i></div>
+                <div class="logo-text"><h2>GalaXXI</h2><span>Archive</span></div>
+            </a>
+            <div class="nav-right">
+                <button id="themeToggle" class="icon-button" aria-label="Dark Mode"><i data-lucide="moon-star"></i></button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="drive-page">
+        <a class="drive-back" href="index.html"><i data-lucide="arrow-left"></i> Kembali ke Archive</a>
+
+        <section class="drive-head">
+            <span class="section-badge">☁️ Google Drive</span>
+            <h1>Daftar <span>Album Drive</span></h1>
+            <p>Semua album GalaXXI yang terhubung ke Google Drive. Pilih album untuk langsung membuka folder dokumentasinya.</p>
+        </section>
+
+        <section id="driveList" class="drive-list" aria-live="polite"></section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand"><div class="footer-logo"><i data-lucide="images"></i></div><div><h2>GalaXXI Archive</h2><p>Every Memory Has Its Place.</p></div></div>
+            <div class="footer-links"><a href="index.html">Home</a><a href="index.html#albums">Album</a><a href="drive.html">Drive</a></div>
+        </div>
+        <div class="footer-bottom"><p>© 2026 GalaXXI Archive</p><span>Made with ❤️ by Gandy</span></div>
+    </footer>
+
+    <script src="albums.js"></script>
+    <script>
+        "use strict";
+
+        const list = document.getElementById("driveList");
+
+        if (Array.isArray(albums) && albums.length) {
+            albums.forEach((album, index) => {
+                const item = document.createElement("article");
+                item.className = "drive-item";
+
+                item.innerHTML = `
+                    <div class="drive-number">${String(index + 1).padStart(2, "0")}</div>
+                    <div class="drive-info">
+                        <h2>${album.title}</h2>
+                        <p>${album.category} • ${album.date}</p>
+                    </div>
+                    <a class="drive-open" href="${album.link}" target="_blank" rel="noopener noreferrer">
+                        Buka Drive <i data-lucide="external-link"></i>
+                    </a>
+                `;
+
+                list.appendChild(item);
+            });
+        } else {
+            list.innerHTML = '<div class="drive-empty">Belum ada album Drive yang tersedia.</div>';
+        }
+
+        const themeToggle = document.getElementById("themeToggle");
+        themeToggle?.addEventListener("click", () => {
+            document.body.classList.toggle("light");
+            localStorage.setItem("theme", document.body.classList.contains("light") ? "light" : "dark");
+        });
+
+        if (localStorage.getItem("theme") === "light") {
+            document.body.classList.add("light");
+        }
+
+        lucide.createIcons();
+    </script>
+</body>
+</html>
