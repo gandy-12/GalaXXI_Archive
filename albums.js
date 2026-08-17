@@ -19,7 +19,6 @@ const albums = [
     /*==============================================
         ALBUM 01
     ==============================================*/
-
     {
         id: 1,
         title: "Pergantian Pangkat",
@@ -29,20 +28,16 @@ const albums = [
         photos: 120,
         unlimited: false,
         featured: true,
-
         cover: "assets/covers/Pergantian Pangkat.jpg",
-
         covers: [
             "assets/covers/Pergantian Pangkat.jpg"
         ],
-
         link: "https://drive.google.com/drive/folders/1Orukhi1sVJvXJdeMssnmhlyiwCBg1bLt?usp=sharing"
     },
 
     /*==============================================
         ALBUM 02
     ==============================================*/
-
     {
         id: 2,
         title: "Pelantikan OSIS & PMR 2026",
@@ -52,20 +47,16 @@ const albums = [
         photos: 85,
         unlimited: false,
         featured: false,
-
         cover: "assets/covers/Osis PMR.JPG",
-
         covers: [
             "assets/covers/Osis PMR.JPG"
         ],
-
         link: "https://drive.google.com/drive/folders/1SF6vQenVT4lPm-8XMi-XFTpG4g22OBia?usp=drive_link"
     },
 
     /*==============================================
         ALBUM 03
     ==============================================*/
-
     {
         id: 3,
         title: "Ramadhan GalaXXI",
@@ -75,20 +66,16 @@ const albums = [
         photos: 0,
         unlimited: false,
         featured: false,
-
         cover: "assets/covers/Ramadhan.jpg",
-
         covers: [
             "assets/covers/Ramadhan.jpg"
         ],
-
         link: "https://drive.google.com/drive/folders/1s4jPLm-2uRg-u4EU_L9U3NzckBrX_sQm?usp=drive_link"
     },
 
     /*==============================================
         ALBUM 04
     ==============================================*/
-
     {
         id: 4,
         title: "GalaXXI Camping Part 1",
@@ -98,9 +85,7 @@ const albums = [
         photos: 0,
         unlimited: false,
         featured: false,
-
         cover: "assets/covers/pramuka a.JPG",
-
         covers: [
             "assets/covers/pramuka a.JPG",
             "assets/covers/pramuka b.JPG",
@@ -108,14 +93,12 @@ const albums = [
             "assets/covers/pramuka d.JPG",
             "assets/covers/pramuka e.JPG"
         ],
-
         link: "https://drive.google.com/drive/folders/1Bz7MBLhcFSi5iSd5wRbcZRw1yV_I3_96?usp=drive_link"
     },
 
     /*==============================================
         ALBUM 05
     ==============================================*/
-
     {
         id: 5,
         title: "GalaXXI Camping Part 2",
@@ -125,23 +108,19 @@ const albums = [
         photos: 0,
         unlimited: false,
         featured: false,
-
         cover: "assets/covers/pr a.JPG",
-
         covers: [
             "assets/covers/pr a.JPG",
             "assets/covers/pr b.JPG",
             "assets/covers/pr c.JPG",
             "assets/covers/pr d.JPG"
         ],
-
         link: "https://drive.google.com/drive/folders/1CJGuYq175tQG0n3_fdAXaTNOd3nNGfCe?usp=drive_link"
     },
 
     /*==============================================
         ALBUM 06
     ==============================================*/
-
     {
         id: 6,
         title: "Behind The Scene Camping GalaXXI",
@@ -151,22 +130,16 @@ const albums = [
         photos: 0,
         unlimited: false,
         featured: false,
-
-        /* File BTS lama ternyata bukan gambar JPG yang valid.
-           Gunakan placeholder yang valid agar kartu tidak rusak. */
         cover: "assets/covers/bts-placeholder.svg",
-
         covers: [
             "assets/covers/bts-placeholder.svg"
         ],
-
         link: "https://drive.google.com/drive/folders/1Nx5mXzFnwk3QPumpugaf4ysqUMCuzsyw?usp=drive_link"
     },
 
     /*==============================================
         ALBUM 07
     ==============================================*/
-
     {
         id: 7,
         title: "GalaXXI at perpisahan AleXXander",
@@ -176,9 +149,7 @@ const albums = [
         photos: 0,
         unlimited: false,
         featured: false,
-
         cover: "assets/covers/pps 1.JPG",
-
         covers: [
             "assets/covers/pps 1.JPG",
             "assets/covers/pps 2.JPG",
@@ -188,14 +159,12 @@ const albums = [
             "assets/covers/pps 6.JPG",
             "assets/covers/pps 7.JPG"
         ],
-
         link: "https://drive.google.com/drive/folders/1Nx5mXzFnwk3QPumpugaf4ysqUMCuzsyw?usp=drive_link"
-    }
+    },
 
-     /*==============================================
+    /*==============================================
         ALBUM 08
     ==============================================*/
-
     {
         id: 8,
         title: "GalaXXI P5; Market Day",
@@ -205,9 +174,7 @@ const albums = [
         photos: 0,
         unlimited: false,
         featured: false,
-
         cover: "assets/covers/p51.JPG",
-
         covers: [
             "assets/covers/p51.JPG",
             "assets/covers/p52.JPG",
@@ -216,7 +183,6 @@ const albums = [
             "assets/covers/p55.JPG",
             "assets/covers/p56.JPG"
         ],
-
         link: "https://drive.google.com/drive/folders/1ljKpjsU-VhX9kZTTGqYlCD9e0JxYH5Ay?usp=sharing"
     }
 
