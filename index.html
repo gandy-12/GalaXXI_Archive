@@ -31,83 +31,18 @@
     <link rel="stylesheet" href="style.css">
 
     <style>
-        /* =========================================
-           MULTI-COVER CAROUSEL
-           Tidak memakai thumbnail kecil di bawah.
-           Bisa klik panah atau swipe pada gambar.
-        ========================================= */
-
-        .album-cover {
-            position: relative;
-            overflow: hidden;
-            touch-action: pan-y;
-        }
-
-        .album-cover .cover-image {
-            display: block;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            user-select: none;
-            -webkit-user-drag: none;
-            transition: opacity .2s ease, transform .35s ease;
-        }
-
-        .cover-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 42px;
-            height: 42px;
-            display: grid;
-            place-items: center;
-            border: 1px solid rgba(255,255,255,.18);
-            border-radius: 50%;
-            background: rgba(2,6,23,.58);
-            color: white;
-            backdrop-filter: blur(12px);
-            cursor: pointer;
-            z-index: 5;
-            opacity: 0;
-            transition: opacity .25s ease, transform .25s ease, background .25s ease;
-        }
-
-        .cover-nav svg {
-            width: 19px;
-            height: 19px;
-        }
-
-        .cover-prev {
-            left: 14px;
-        }
-
-        .cover-next {
-            right: 14px;
-        }
-
-        .album-cover:hover .cover-nav {
-            opacity: 1;
-        }
-
-        .cover-nav:hover {
-            background: rgba(96,165,250,.85);
-        }
-
-        .cover-nav:active {
-            transform: translateY(-50%) scale(.92);
-        }
-
-        .hidden-cover-control {
-            display: none !important;
-        }
-
-        @media (max-width: 700px) {
-            .cover-nav {
-                opacity: 1;
-                width: 38px;
-                height: 38px;
-            }
-        }
+        .album-cover { position: relative; overflow: hidden; touch-action: pan-y; }
+        .album-cover .cover-image { display: block; width: 100%; height: 100%; object-fit: cover; user-select: none; -webkit-user-drag: none; transition: opacity .2s ease, transform .35s ease; }
+        .cover-nav { position: absolute; top: 50%; transform: translateY(-50%); width: 42px; height: 42px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.18); border-radius: 50%; background: rgba(2,6,23,.58); color: white; backdrop-filter: blur(12px); cursor: pointer; z-index: 5; opacity: 0; transition: opacity .25s ease, transform .25s ease, background .25s ease; }
+        .cover-nav svg { width: 19px; height: 19px; }
+        .cover-prev { left: 14px; }
+        .cover-next { right: 14px; }
+        .album-cover:hover .cover-nav { opacity: 1; }
+        .cover-nav:hover { background: rgba(96,165,250,.85); }
+        .cover-nav:active { transform: translateY(-50%) scale(.92); }
+        .hidden-cover-control { display: none !important; }
+        .stat-card-link { text-decoration: none; color: inherit; }
+        @media (max-width: 700px) { .cover-nav { opacity: 1; width: 38px; height: 38px; } }
     </style>
 </head>
 
@@ -129,19 +64,11 @@
     <header>
         <nav class="navbar">
             <a href="#" class="logo">
-                <div class="logo-icon">
-                    <i data-lucide="images"></i>
-                </div>
-                <div class="logo-text">
-                    <h2>GalaXXI</h2>
-                    <span>Archive</span>
-                </div>
+                <div class="logo-icon"><i data-lucide="images"></i></div>
+                <div class="logo-text"><h2>GalaXXI</h2><span>Archive</span></div>
             </a>
-
             <div class="nav-right">
-                <button id="themeToggle" class="icon-button" aria-label="Dark Mode">
-                    <i data-lucide="moon-star"></i>
-                </button>
+                <button id="themeToggle" class="icon-button" aria-label="Dark Mode"><i data-lucide="moon-star"></i></button>
             </div>
         </nav>
     </header>
@@ -151,179 +78,88 @@
             <span class="hero-badge">📷 Personal Photo Archive</span>
             <h1>Every Memory<br><span>Has Its Place.</span></h1>
             <p>Simpan seluruh album Google Drive dalam satu tempat yang elegan, mudah dicari, dan nyaman diakses kapan pun.</p>
-
             <div class="hero-buttons">
                 <a href="#albums" class="btn-primary">Jelajahi Album</a>
                 <a href="#stats" class="btn-secondary">Lihat Statistik</a>
             </div>
         </div>
-
-        <div class="hero-visual">
-            <div class="planet">
-                <div class="planet-ring"></div>
-                <div class="planet-glow"></div>
-            </div>
-        </div>
+        <div class="hero-visual"><div class="planet"><div class="planet-ring"></div><div class="planet-glow"></div></div></div>
     </section>
 
     <section class="featured-dashboard">
         <div class="featured-left">
             <span class="section-badge">⭐ Featured Album</span>
-
             <div class="featured-card">
-                <div class="featured-cover">
-                    <img id="featuredCover" src="assets/covers/default.webp" alt="Featured Album">
-                </div>
-
+                <div class="featured-cover"><img id="featuredCover" src="assets/covers/default.webp" alt="Featured Album"></div>
                 <div class="featured-content">
                     <span class="featured-category">Sekolah</span>
                     <h2 id="featuredTitle">Class Meeting 2026</h2>
                     <p id="featuredDescription">Album pilihan yang akan ditampilkan secara otomatis dari albums.js.</p>
-
-                    <div class="featured-info">
-                        <span id="featuredDate">📅 24 Mei 2026</span>
-                        <span id="featuredPhotos">📷 156 Foto</span>
-                    </div>
-
+                    <div class="featured-info"><span id="featuredDate">📅 24 Mei 2026</span><span id="featuredPhotos">📷 156 Foto</span></div>
                     <a id="featuredLink" href="#" target="_blank" rel="noopener noreferrer" class="btn-primary">Buka Album</a>
                 </div>
             </div>
         </div>
 
         <div class="hero-mini-stats">
-            <div class="mini-card">
-                <h2 id="miniAlbum">0</h2>
-                <p>Album</p>
-            </div>
-            <div class="mini-card">
-                <h2 id="miniPhoto">0</h2>
-                <p>Foto</p>
-            </div>
-            <div class="mini-card">
-                <h2>Drive</h2>
-                <p>Cloud</p>
-            </div>
-            <div class="mini-card">
-                <h2 id="miniCategory">0</h2>
-                <p>Kategori</p>
-            </div>
+            <div class="mini-card"><h2 id="miniAlbum">0</h2><p>Album</p></div>
+            <div class="mini-card"><h2 id="miniPhoto">0</h2><p>Foto</p></div>
+            <div class="mini-card"><h2>Drive</h2><p>Cloud</p></div>
+            <div class="mini-card"><h2 id="miniCategory">0</h2><p>Kategori</p></div>
         </div>
     </section>
 
     <section class="section-title">
-        <div>
-            <span>📚 Collection</span>
-            <h2>Semua Album</h2>
-        </div>
+        <div><span>📚 Collection</span><h2>Semua Album</h2></div>
     </section>
 
     <section class="search-section">
-        <div class="search-wrapper">
-            <div class="search-box">
-                <i data-lucide="search"></i>
-                <input type="text" id="searchInput" placeholder="Cari album...">
-            </div>
-        </div>
+        <div class="search-wrapper"><div class="search-box"><i data-lucide="search"></i><input type="text" id="searchInput" placeholder="Cari album..."></div></div>
     </section>
 
     <section id="stats" class="stats-section">
         <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-icon"><i data-lucide="folder-open"></i></div>
-                <div><h2 id="albumCount">0</h2><p>Album</p></div>
-            </div>
-
-            <div class="stat-card">
-                <div class="stat-icon"><i data-lucide="image"></i></div>
-                <div><h2 id="photoCount">0</h2><p>Total Foto</p></div>
-            </div>
-
-            <a id="driveStat" class="stat-card stat-card-link" href="#" target="_blank" rel="noopener noreferrer" aria-label="Buka arsip Google Drive">
-                <div class="stat-icon"><i data-lucide="cloud"></i></div>
-                <div><h2>Drive</h2><p>Google Drive</p></div>
+            <div class="stat-card"><div class="stat-icon"><i data-lucide="folder-open"></i></div><div><h2 id="albumCount">0</h2><p>Album</p></div></div>
+            <div class="stat-card"><div class="stat-icon"><i data-lucide="image"></i></div><div><h2 id="photoCount">0</h2><p>Total Foto</p></div></div>
+            <a id="driveStat" class="stat-card stat-card-link" href="drive.html" aria-label="Lihat daftar Google Drive">
+                <div class="stat-icon"><i data-lucide="cloud"></i></div><div><h2>Drive</h2><p>Google Drive</p></div>
             </a>
-
-            <div class="stat-card">
-                <div class="stat-icon"><i data-lucide="tag"></i></div>
-                <div><h2 id="categoryCount">0</h2><p>Kategori</p></div>
-            </div>
+            <div class="stat-card"><div class="stat-icon"><i data-lucide="tag"></i></div><div><h2 id="categoryCount">0</h2><p>Kategori</p></div></div>
         </div>
     </section>
 
-    <section class="category-section">
-        <div class="category-wrapper">
-            <button class="category active" data-category="Semua">Semua</button>
-        </div>
-    </section>
+    <section class="category-section"><div class="category-wrapper"><button class="category active" data-category="Semua">Semua</button></div></section>
 
-    <main id="albums" class="main-content">
-        <section id="albumContainer" class="album-grid"></section>
-    </main>
+    <main id="albums" class="main-content"><section id="albumContainer" class="album-grid"></section></main>
 
     <template id="albumTemplate">
         <article class="album-card">
             <div class="album-cover">
                 <img class="cover-image" src="" alt="Album Cover">
-
-                <button class="cover-nav cover-prev" type="button" aria-label="Foto sebelumnya">
-                    <i data-lucide="chevron-left"></i>
-                </button>
-
-                <button class="cover-nav cover-next" type="button" aria-label="Foto berikutnya">
-                    <i data-lucide="chevron-right"></i>
-                </button>
-
+                <button class="cover-nav cover-prev" type="button" aria-label="Foto sebelumnya"><i data-lucide="chevron-left"></i></button>
+                <button class="cover-nav cover-next" type="button" aria-label="Foto berikutnya"><i data-lucide="chevron-right"></i></button>
                 <div class="cover-placeholder"><i data-lucide="camera"></i></div>
             </div>
-
             <div class="album-content">
-                <span class="album-category"></span>
-                <h3 class="album-title"></h3>
-                <p class="album-description"></p>
-
-                <div class="album-info">
-                    <div><i data-lucide="calendar-days"></i><span class="album-date"></span></div>
-                    <div><i data-lucide="images"></i><span class="album-total"></span></div>
-                </div>
-
-                <a class="open-button" target="_blank" rel="noopener noreferrer">
-                    <span>Buka Album</span>
-                    <i data-lucide="arrow-up-right"></i>
-                </a>
+                <span class="album-category"></span><h3 class="album-title"></h3><p class="album-description"></p>
+                <div class="album-info"><div><i data-lucide="calendar-days"></i><span class="album-date"></span></div><div><i data-lucide="images"></i><span class="album-total"></span></div></div>
+                <a class="open-button" target="_blank" rel="noopener noreferrer"><span>Buka Album</span><i data-lucide="arrow-up-right"></i></a>
             </div>
         </article>
     </template>
 
-    <section id="emptyState" class="empty-state hidden">
-        <div class="empty-icon"><i data-lucide="folder-search"></i></div>
-        <h2>Album tidak ditemukan</h2>
-        <p>Coba gunakan kata kunci lain atau pilih kategori yang berbeda.</p>
-    </section>
+    <section id="emptyState" class="empty-state hidden"><div class="empty-icon"><i data-lucide="folder-search"></i></div><h2>Album tidak ditemukan</h2><p>Coba gunakan kata kunci lain atau pilih kategori yang berbeda.</p></section>
 
     <button id="backToTop" class="back-to-top" aria-label="Kembali ke atas"><i data-lucide="arrow-up"></i></button>
     <div id="scrollProgress" class="scroll-progress"></div>
-
-    <div id="toast" class="toast">
-        <i data-lucide="check-circle"></i>
-        <span>Berhasil dibuka.</span>
-    </div>
+    <div id="toast" class="toast"><i data-lucide="check-circle"></i><span>Berhasil dibuka.</span></div>
 
     <footer class="footer">
         <div class="footer-content">
-            <div class="footer-brand">
-                <div class="footer-logo"><i data-lucide="images"></i></div>
-                <div><h2>GalaXXI Archive</h2><p>Every Memory Has Its Place.</p></div>
-            </div>
-            <div class="footer-links">
-                <a href="#">Home</a>
-                <a href="#albums">Album</a>
-                <a href="#stats">Statistik</a>
-            </div>
+            <div class="footer-brand"><div class="footer-logo"><i data-lucide="images"></i></div><div><h2>GalaXXI Archive</h2><p>Every Memory Has Its Place.</p></div></div>
+            <div class="footer-links"><a href="#">Home</a><a href="#albums">Album</a><a href="#stats">Statistik</a></div>
         </div>
-        <div class="footer-bottom">
-            <p>© 2026 GalaXXI Archive</p>
-            <span>Made with ❤️ by Gandy</span>
-        </div>
+        <div class="footer-bottom"><p>© 2026 GalaXXI Archive</p><span>Made with ❤️ by Gandy</span></div>
     </footer>
 
     <script src="albums.js"></script>
