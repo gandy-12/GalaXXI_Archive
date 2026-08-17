@@ -31,7 +31,13 @@
         .cover-nav:active { transform: translateY(-50%) scale(.92); }
         .hidden-cover-control { display: none !important; }
         .stat-card-link { text-decoration: none; color: inherit; }
-        @media (max-width: 700px) { .cover-nav { opacity: 1; width: 38px; height: 38px; } }
+        .timeline-stat { cursor: pointer; }
+        .timeline-stat:hover .stat-icon { transform: rotate(-4deg) scale(1.05); }
+        .timeline-stat .stat-icon { transition: transform .35s ease; }
+        @media (min-width: 1101px) { .stats-grid { grid-template-columns: repeat(5,1fr); } }
+        @media (max-width: 1100px) and (min-width: 701px) { .stats-grid { grid-template-columns: repeat(3,1fr); } }
+        @media (max-width: 700px) { .stats-grid { grid-template-columns: repeat(2,1fr); } .cover-nav { opacity: 1; width: 38px; height: 38px; } }
+        @media (max-width: 480px) { .stats-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 
@@ -91,6 +97,7 @@
             <div class="stat-card"><div class="stat-icon"><i data-lucide="image"></i></div><div><h2 id="photoCount">0</h2><p>Total Foto</p></div></div>
             <a id="driveStat" class="stat-card stat-card-link" href="drive.html" aria-label="Lihat daftar Google Drive"><div class="stat-icon"><i data-lucide="cloud"></i></div><div><h2>Drive</h2><p>Google Drive</p></div></a>
             <div class="stat-card"><div class="stat-icon"><i data-lucide="tag"></i></div><div><h2 id="categoryCount">0</h2><p>Kategori</p></div></div>
+            <a class="stat-card stat-card-link timeline-stat" href="timeline.html" aria-label="Lihat Timeline GalaXXI"><div class="stat-icon"><i data-lucide="route"></i></div><div><h2>Timeline</h2><p>GalaXXI Journey</p></div></a>
         </div>
     </section>
 
@@ -110,7 +117,7 @@
     <div id="toast" class="toast"><i data-lucide="check-circle"></i><span>Berhasil dibuka.</span></div>
 
     <footer class="footer">
-        <div class="footer-content"><div class="footer-brand"><div class="footer-logo"><i data-lucide="images"></i></div><div><h2>GalaXXI Archive</h2><p>Every Memory Has Its Place.</p></div></div><div class="footer-links"><a href="#">Home</a><a href="#albums">Album</a><a href="stats.html">Statistik</a></div></div>
+        <div class="footer-content"><div class="footer-brand"><div class="footer-logo"><i data-lucide="images"></i></div><div><h2>GalaXXI Archive</h2><p>Every Memory Has Its Place.</p></div></div><div class="footer-links"><a href="#">Home</a><a href="#albums">Album</a><a href="stats.html">Statistik</a><a href="timeline.html">Timeline</a></div></div>
         <div class="footer-bottom"><p>© 2026 GalaXXI Archive</p><span>Made with ❤️ by Gandy</span></div>
     </footer>
 
