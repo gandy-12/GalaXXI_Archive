@@ -1,6 +1,6 @@
 /*==================================================
     GalaXXI Archive
-    Version 1.4
+    Version 1.5
 ==================================================*/
 
 "use strict";
@@ -14,9 +14,6 @@ const App = {
         keyword: ""
     },
 
-    /* Total Foto adalah indikator arsip, bukan jumlah matematis
-       dari field photos tiap album. Album tetap bisa memiliki
-       jumlah foto normal tanpa harus unlimited. */
     totalPhotosUnlimited: true,
 
     dom: {},
@@ -150,7 +147,6 @@ const App = {
 
             const showCover = index => {
                 if (!cover || covers.length === 0) return;
-
                 currentIndex = (index + covers.length) % covers.length;
                 cover.src = covers[currentIndex];
                 cover.alt = `${album.title} - Foto ${currentIndex + 1}`;
@@ -207,9 +203,7 @@ const App = {
                     }
                 }, { passive: true });
 
-                coverBox.addEventListener("dragstart", event => {
-                    event.preventDefault();
-                });
+                coverBox.addEventListener("dragstart", event => event.preventDefault());
             }
 
             this.dom.albumContainer.appendChild(clone);
@@ -224,7 +218,6 @@ const App = {
         if (!this.dom.featuredCover) return;
 
         let featured = this.state.filteredAlbums.find(album => album.featured);
-
         if (!featured) featured = this.state.filteredAlbums[0];
         if (!featured) return;
 
@@ -242,11 +235,12 @@ const App = {
             this.dom.featuredLink.rel = "noopener noreferrer";
         }
 
+        /* Drive card now uses the dedicated Drive archive page.
+           Jangan ditimpa dengan link featured album. */
         if (this.dom.driveStat) {
-            this.dom.driveStat.href = featured.link;
-            this.dom.driveStat.target = "_blank";
-            this.dom.driveStat.rel = "noopener noreferrer";
-            this.dom.driveStat.title = `Buka Google Drive: ${featured.title}`;
+            this.dom.driveStat.href = "drive.html";
+            this.dom.driveStat.removeAttribute("target");
+            this.dom.driveStat.title = "Lihat daftar seluruh Google Drive album";
             this.dom.driveStat.style.cursor = "pointer";
         }
     },
@@ -290,29 +284,19 @@ const App = {
 
         const timer = setInterval(() => {
             current += increment;
-
             if (current >= target) {
                 current = target;
                 clearInterval(timer);
             }
-
             element.textContent = this.format(current);
         }, 15);
     },
 
     filterAlbums() {
         this.state.filteredAlbums = this.state.albums.filter(album => {
-            const matchCategory =
-                this.state.currentCategory === "Semua" ||
-                album.category === this.state.currentCategory;
-
+            const matchCategory = this.state.currentCategory === "Semua" || album.category === this.state.currentCategory;
             const keyword = this.state.keyword.toLowerCase();
-
-            const matchKeyword =
-                album.title.toLowerCase().includes(keyword) ||
-                album.description.toLowerCase().includes(keyword) ||
-                album.category.toLowerCase().includes(keyword);
-
+            const matchKeyword = album.title.toLowerCase().includes(keyword) || album.description.toLowerCase().includes(keyword) || album.category.toLowerCase().includes(keyword);
             return matchCategory && matchKeyword;
         });
 
@@ -323,21 +307,13 @@ const App = {
     renderCategories() {
         if (!this.dom.categoryWrapper) return;
 
-        const categories = [
-            "Semua",
-            ...new Set(this.state.albums.map(album => album.category))
-        ];
-
+        const categories = ["Semua", ...new Set(this.state.albums.map(album => album.category))];
         this.dom.categoryWrapper.innerHTML = "";
 
         categories.forEach(category => {
             const button = document.createElement("button");
             button.className = "category";
-
-            if (category === "Semua") {
-                button.classList.add("active");
-            }
-
+            if (category === "Semua") button.classList.add("active");
             button.dataset.category = category;
             button.textContent = category;
             this.dom.categoryWrapper.appendChild(button);
@@ -351,15 +327,10 @@ const App = {
             const progress = height > 0 ? (scrollTop / height) * 100 : 0;
 
             if (this.dom.progress) this.dom.progress.style.width = progress + "%";
-
-            if (this.dom.backTop) {
-                this.dom.backTop.classList.toggle("show", scrollTop > 400);
-            }
+            if (this.dom.backTop) this.dom.backTop.classList.toggle("show", scrollTop > 400);
         });
 
-        this.dom.backTop?.addEventListener("click", () => {
-            window.scrollTo({ top: 0, behavior: "smooth" });
-        });
+        this.dom.backTop?.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
 
         this.dom.searchInput?.addEventListener("input", event => {
             this.state.keyword = event.target.value.trim();
@@ -370,10 +341,7 @@ const App = {
             const button = event.target.closest(".category");
             if (!button) return;
 
-            this.dom.categoryWrapper
-                .querySelectorAll(".category")
-                .forEach(item => item.classList.remove("active"));
-
+            this.dom.categoryWrapper.querySelectorAll(".category").forEach(item => item.classList.remove("active"));
             button.classList.add("active");
             this.state.currentCategory = button.dataset.category;
             this.filterAlbums();
@@ -381,22 +349,15 @@ const App = {
 
         const goToAlbumList = event => {
             event?.preventDefault();
-
             const albumSection = document.getElementById("albums");
             if (!albumSection) return;
 
-            albumSection.scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-            });
+            albumSection.scrollIntoView({ behavior: "smooth", block: "start" });
 
             setTimeout(() => {
                 const firstAlbum = albumSection.querySelector(".album-card");
                 firstAlbum?.classList.add("album-focus");
-
-                setTimeout(() => {
-                    firstAlbum?.classList.remove("album-focus");
-                }, 900);
+                setTimeout(() => firstAlbum?.classList.remove("album-focus"), 900);
             }, 500);
         };
 
@@ -405,56 +366,36 @@ const App = {
 
         [albumStat, miniAlbumCard].forEach(card => {
             if (!card) return;
-
             card.style.cursor = "pointer";
             card.setAttribute("role", "button");
             card.setAttribute("tabindex", "0");
             card.setAttribute("aria-label", "Lihat daftar album");
-
             card.addEventListener("click", goToAlbumList);
-
             card.addEventListener("keydown", event => {
-                if (event.key === "Enter" || event.key === " ") {
-                    goToAlbumList(event);
-                }
+                if (event.key === "Enter" || event.key === " ") goToAlbumList(event);
             });
         });
 
         this.dom.themeToggle?.addEventListener("click", () => {
             document.body.classList.toggle("light");
-
-            localStorage.setItem(
-                "theme",
-                document.body.classList.contains("light") ? "light" : "dark"
-            );
+            localStorage.setItem("theme", document.body.classList.contains("light") ? "light" : "dark");
         });
 
         const savedTheme = localStorage.getItem("theme");
-        if (savedTheme === "light") {
-            document.body.classList.add("light");
-        }
+        if (savedTheme === "light") document.body.classList.add("light");
     },
 
     initObserver() {
         if (!("IntersectionObserver" in window)) return;
 
-        const observer = new IntersectionObserver(
-            entries => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add("active");
-                    }
-                });
-            },
-            { threshold: 0.15 }
-        );
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add("active");
+            });
+        }, { threshold: 0.15 });
 
-        document.querySelectorAll(".reveal").forEach(element => {
-            observer.observe(element);
-        });
+        document.querySelectorAll(".reveal").forEach(element => observer.observe(element));
     }
 };
 
-document.addEventListener("DOMContentLoaded", () => {
-    App.init();
-});
+document.addEventListener("DOMContentLoaded", () => App.init());
