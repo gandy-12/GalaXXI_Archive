@@ -192,4 +192,32 @@ const albums = [
         link: "https://drive.google.com/drive/folders/1Nx5mXzFnwk3QPumpugaf4ysqUMCuzsyw?usp=drive_link"
     }
 
+     /*==============================================
+        ALBUM 08
+    ==============================================*/
+
+    {
+        id: 8,
+        title: "GalaXXI P5; Market Day",
+        category: "Angkatan",
+        description: "Themost unexpected actifity.",
+        date: "15 Juni 2026",
+        photos: 0,
+        unlimited: false,
+        featured: false,
+
+        cover: "assets/covers/p51.JPG",
+
+        covers: [
+            "assets/covers/p51.JPG",
+            "assets/covers/p52.JPG",
+            "assets/covers/p53.JPG",
+            "assets/covers/p54.JPG",
+            "assets/covers/p55.JPG",
+            "assets/covers/p56.JPG"
+        ],
+
+        link: "https://drive.google.com/drive/folders/1Nx5mXzFnwk3QPumpugaf4ysqUMCuzsyw?usp=drive_link"
+    }
+
 ];
