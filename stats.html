@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Statistik | GalaXXI Archive</title>
+<meta name="theme-color" content="#020617">
+<link rel="icon" href="assets/logo/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;background:#020617;color:#f8fafc;font-family:'Plus Jakarta Sans',sans-serif}.bg{position:fixed;inset:0;z-index:-2;background:radial-gradient(circle at 10% 10%,rgba(37,99,235,.28),transparent 35%),radial-gradient(circle at 90% 20%,rgba(124,58,237,.28),transparent 35%),#020617}.bg:after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 75%,rgba(8,145,178,.14),transparent 30%)}header{position:sticky;top:0;z-index:10;background:rgba(2,6,23,.72);backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.08)}nav{max-width:1200px;margin:auto;padding:18px 24px;display:flex;align-items:center;justify-content:space-between}.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:white}.brand-icon{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,#60a5fa,#a78bfa);color:white}.brand h2{margin:0;font-size:18px}.brand span{color:#94a3b8;font-size:13px}.back{display:inline-flex;align-items:center;gap:8px;padding:10px 15px;border-radius:12px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.05);color:#dbeafe;text-decoration:none}.wrap{max-width:1200px;margin:auto;padding:64px 24px 80px}.eyebrow{color:#60a5fa;font-weight:700}.hero h1{font-size:clamp(36px,6vw,64px);line-height:1.05;margin:12px 0}.hero p{max-width:700px;color:#94a3b8;font-size:16px;line-height:1.8}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:38px 0}.card{padding:24px;border:1px solid rgba(255,255,255,.09);border-radius:22px;background:rgba(15,23,42,.72);box-shadow:0 18px 50px rgba(0,0,0,.18)}.icon{width:44px;height:44px;display:grid;place-items:center;border-radius:14px;background:rgba(96,165,250,.16);color:#93c5fd}.card h2{font-size:32px;margin:18px 0 4px}.card p{margin:0;color:#94a3b8}.section{margin-top:38px}.section h2{font-size:24px;margin-bottom:16px}.table{overflow:hidden;border:1px solid rgba(255,255,255,.09);border-radius:20px;background:rgba(15,23,42,.72)}.row{display:grid;grid-template-columns:1.6fr .8fr .8fr 1fr;gap:15px;padding:17px 20px;border-bottom:1px solid rgba(255,255,255,.07);align-items:center}.row:last-child{border-bottom:0}.head{color:#94a3b8;font-size:13px;font-weight:700}.muted{color:#94a3b8}.badge{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(96,165,250,.12);color:#93c5fd;font-size:12px}.note{margin-top:18px;color:#64748b;font-size:12px;line-height:1.7}.empty{color:#94a3b8;padding:25px}.bar{height:8px;background:rgba(255,255,255,.07);border-radius:99px;overflow:hidden}.bar i{display:block;height:100%;background:linear-gradient(90deg,#60a5fa,#a78bfa);border-radius:99px}.footer{text-align:center;color:#64748b;padding:25px}.footer a{color:#93c5fd;text-decoration:none}@media(max-width:800px){.grid{grid-template-columns:repeat(2,1fr)}.row{grid-template-columns:1.4fr .8fr .8fr}.row>*:last-child{display:none}}@media(max-width:520px){.grid{grid-template-columns:1fr}.wrap{padding:45px 16px}.row{grid-template-columns:1fr .7fr}.row>*:nth-child(3){display:none}.hero h1{font-size:40px}}
+</style>
+</head>
+<body>
+<div class="bg"></div>
+<header><nav><a class="brand" href="index.html"><div class="brand-icon"><i data-lucide="images"></i></div><div><h2>GalaXXI</h2><span>Archive</span></div></a><a class="back" href="index.html"><i data-lucide="arrow-left"></i> Kembali</a></nav></header>
+<main class="wrap">
+<section class="hero"><span class="eyebrow">📊 Archive Insights</span><h1>Statistik GalaXXI</h1><p>Bukan cuma angka. Halaman ini merangkum isi arsip, perkembangan koleksi, kategori album, dan aktivitas kunjungan dari perangkat ini.</p></section>
+<section class="grid">
+<div class="card"><div class="icon"><i data-lucide="folder-open"></i></div><h2 id="albumTotal">0</h2><p>Total Album</p></div>
+<div class="card"><div class="icon"><i data-lucide="image"></i></div><h2>∞</h2><p>Total Foto</p></div>
+<div class="card"><div class="icon"><i data-lucide="tags"></i></div><h2 id="categoryTotal">0</h2><p>Kategori</p></div>
+<div class="card"><div class="icon"><i data-lucide="eye"></i></div><h2 id="visitTotal">0</h2><p>Kunjungan perangkat ini</p></div>
+</section>
+<section class="section"><h2>📚 Rincian Album</h2><div id="albumTable" class="table"></div><p class="note">∞ pada total foto berarti arsip GalaXXI diperlakukan sebagai koleksi yang terus bertambah. Jumlah foto pada setiap album tetap mengikuti data album masing-masing.</p></section>
+<section class="section"><h2>🏷️ Sebaran Kategori</h2><div id="categoryTable" class="table"></div></section>
+<section class="section"><h2>🕒 Aktivitas</h2><div class="card"><p class="muted">Kunjungan terakhir dari perangkat ini</p><h2 id="lastVisit">Belum ada data</h2><p class="note">Penghitung kunjungan ini memakai penyimpanan browser (localStorage), jadi bukan penghitung pengunjung global. Data tidak dikirim ke server.</p></div></section>
+</main>
+<footer class="footer">GalaXXI Archive · <a href="index.html">Kembali ke beranda</a></footer>
+<script src="albums.js"></script>
+<script>
+(function(){
+'use strict';
+const list=Array.isArray(window.albums)?window.albums:[];
+const fmt=n=>new Intl.NumberFormat('id-ID').format(n);
+const albumTotal=document.getElementById('albumTotal');
+const categoryTotal=document.getElementById('categoryTotal');
+const visitTotal=document.getElementById('visitTotal');
+const albumTable=document.getElementById('albumTable');
+const categoryTable=document.getElementById('categoryTable');
+const lastVisit=document.getElementById('lastVisit');
+const categories=[...new Set(list.map(a=>a.category).filter(Boolean))];
+albumTotal.textContent=fmt(list.length);
+categoryTotal.textContent=fmt(categories.length);
+visitTotal.textContent=fmt(Number(localStorage.getItem('galaxxiVisits')||0));
+const last=localStorage.getItem('galaxxiLastVisit');
+if(last){const date=new Date(last);lastVisit.textContent=date.toLocaleString('id-ID',{dateStyle:'full',timeStyle:'short'});}
+if(!list.length){albumTable.innerHTML='<div class="empty">Data album belum tersedia.</div>';categoryTable.innerHTML='<div class="empty">Data kategori belum tersedia.</div>';return;}
+albumTable.innerHTML='<div class="row head"><span>Album</span><span>Kategori</span><span>Foto</span><span>Tanggal</span></div>'+list.map(a=>'<div class="row"><strong>'+escapeHtml(a.title||'Tanpa Judul')+'</strong><span class="badge">'+escapeHtml(a.category||'-')+'</span><span>'+ (a.unlimited?'∞':fmt(Number(a.photos||0)))+'</span><span class="muted">'+escapeHtml(a.date||'-')+'</span></div>').join('');
+const counts={};list.forEach(a=>{counts[a.category]=(counts[a.category]||0)+1;});
+const max=Math.max(...Object.values(counts));
+categoryTable.innerHTML=Object.entries(counts).map(([name,count])=>'<div class="row" style="grid-template-columns:1fr 80px"><strong>'+escapeHtml(name)+'</strong><strong>'+count+'</strong><div style="grid-column:1/-1" class="bar"><i style="width:'+(count/max*100)+'%"></i></div></div>').join('');
+function escapeHtml(value){return String(value).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));}
+if(typeof lucide!=='undefined')lucide.createIcons();
+})();
+</script>
+</body>
+</html>
