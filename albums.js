@@ -130,9 +130,11 @@ const albums = [
         photos: 0,
         unlimited: false,
         featured: false,
-        cover: "assets/covers/bts-placeholder.svg",
+        // File bts 1-4 di repo ternyata bukan file gambar yang valid.
+        // Gunakan foto Camping yang valid sebagai thumbnail sementara.
+        cover: "assets/covers/pr a.JPG",
         covers: [
-            "assets/covers/bts-placeholder.svg"
+            "assets/covers/pr a.JPG"
         ],
         link: "https://drive.google.com/drive/folders/1Nx5mXzFnwk3QPumpugaf4ysqUMCuzsyw?usp=drive_link"
     },
@@ -185,7 +187,8 @@ const albums = [
         ],
         link: "https://drive.google.com/drive/folders/1ljKpjsU-VhX9kZTTGqYlCD9e0JxYH5Ay?usp=sharing"
     },
-     /*==============================================
+
+    /*==============================================
         ALBUM 09
     ==============================================*/
     {
