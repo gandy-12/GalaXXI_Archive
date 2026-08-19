@@ -28,33 +28,14 @@ const albums = [
 
 /*==================================================
     ALBUM ACCESS BADGES
-    Badge muncul di kanan area informasi album.
+    Tambahkan access: "belajar" atau access: "public"
+    pada album yang ingin diberi penanda.
 ==================================================*/
 (function injectAlbumEnhancements(){
     const style = document.createElement("style");
     style.textContent = `
         .album-content{position:relative;}
-        .album-access-badge{
-            position:absolute;
-            top:22px;
-            right:22px;
-            display:inline-flex;
-            align-items:center;
-            gap:7px;
-            max-width:calc(100% - 44px);
-            padding:8px 11px;
-            border:1px solid rgba(255,255,255,.13);
-            border-radius:999px;
-            background:rgba(15,23,42,.82);
-            backdrop-filter:blur(12px);
-            -webkit-backdrop-filter:blur(12px);
-            color:#cbd5e1;
-            font-size:.72rem;
-            font-weight:700;
-            line-height:1;
-            box-shadow:0 8px 22px rgba(2,6,23,.2);
-            z-index:2;
-        }
+        .album-access-badge{position:absolute;top:22px;right:22px;display:inline-flex;align-items:center;gap:7px;max-width:calc(100% - 44px);padding:8px 11px;border:1px solid rgba(255,255,255,.13);border-radius:999px;background:rgba(15,23,42,.82);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:#cbd5e1;font-size:.72rem;font-weight:700;line-height:1;box-shadow:0 8px 22px rgba(2,6,23,.2);z-index:2;}
         .album-access-badge.access-belajar{color:#dbeafe;border-color:rgba(96,165,250,.35);background:rgba(30,58,138,.28);}
         .album-access-badge.access-public{color:#d1fae5;border-color:rgba(52,211,153,.3);background:rgba(6,78,59,.25);}
         .album-access-badge .access-icon{font-size:.95rem;line-height:1;}
@@ -62,14 +43,11 @@ const albums = [
     `;
     document.head.appendChild(style);
 
-    const accessMap = {
-        belajar: { icon: "🎓", label: "Akun belajar.id" },
-        public: { icon: "🌐", label: "Akun bebas" }
-    };
-
+    const accessMap = { belajar:{icon:"🎓",label:"Akun belajar.id"}, public:{icon:"🌐",label:"Akun bebas"} };
     const addBadges = () => {
-        document.querySelectorAll(".album-card").forEach((card, index) => {
-            const album = albums[index];
+        document.querySelectorAll(".album-card").forEach(card => {
+            const title = card.querySelector(".album-title")?.textContent?.trim();
+            const album = albums.find(item => item.title === title);
             const content = card.querySelector(".album-content");
             if (!album || !content || !album.access || content.querySelector(".album-access-badge")) return;
             const access = accessMap[album.access];
@@ -85,7 +63,7 @@ const albums = [
     document.addEventListener("DOMContentLoaded", () => {
         const container = document.getElementById("albumContainer");
         if (!container) return;
-        new MutationObserver(addBadges).observe(container, { childList:true, subtree:true });
+        new MutationObserver(addBadges).observe(container,{childList:true,subtree:true});
         addBadges();
     });
 })();
