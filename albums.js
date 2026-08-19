@@ -77,6 +77,7 @@ const albums = [
             "assets/covers/pramuka e.JPG"
         ],
         link: "https://drive.google.com/drive/folders/1Bz7MBLhcFSi5iSd5wRbcZRw1yV_I3_96?usp=drive_link"
+         access: "public",
     },
     {
         id: 5,
@@ -95,6 +96,7 @@ const albums = [
             "assets/covers/pr d.JPG"
         ],
         link: "https://drive.google.com/drive/folders/1CJGuYq175tQG0n3_fdAXaTNOd3nNGfCe?usp=drive_link"
+         access: "public",
     },
     {
         id: 6,
@@ -110,6 +112,7 @@ const albums = [
             "assets/covers/pr a.JPG"
         ],
         link: "https://drive.google.com/drive/folders/1Nx5mXzFnwk3QPumpugaf4ysqUMCuzsyw?usp=drive_link"
+         access: "public",
     },
     {
         id: 7,
@@ -131,6 +134,7 @@ const albums = [
             "assets/covers/pps 7.JPG"
         ],
         link: "https://drive.google.com/drive/folders/1Nx5mXzFnwk3QPumpugaf4ysqUMCuzsyw?usp=drive_link"
+         access: "public",
     },
     {
         id: 8,
@@ -189,6 +193,7 @@ const albums = [
             "assets/covers/.JPG"
         ],
         link: "https://drive.google.com/drive/folders/1fOx6FNRHSVk1fxuLy_hwNYG10eJdAb1x?usp=sharing"
+         access: "public",
     },
     {
         id: 11,
@@ -208,6 +213,7 @@ const albums = [
             "assets/covers/.JPG"
         ],
         link: "https://drive.google.com/drive/folders/14fUf4_BjTO8iHg8i6DTiQLE8cAT8Dgib?usp=sharing"
+        access: "public",
     }
 ];
 
