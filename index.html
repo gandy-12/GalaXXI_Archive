@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="style.css">
 
     <style>
-        .album-cover { position: relative; overflow: hidden; touch-action: pan-y; }
+        .album-cover { position: relative; overflow: hidden; touch-action: pan-y; aspect-ratio: 16 / 9; height: auto; }
         .album-cover .cover-image { display: block; width: 100%; height: 100%; object-fit: cover; user-select: none; -webkit-user-drag: none; transition: opacity .2s ease, transform .35s ease; }
         .cover-nav { position: absolute; top: 50%; transform: translateY(-50%); width: 42px; height: 42px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.18); border-radius: 50%; background: rgba(2,6,23,.58); color: white; backdrop-filter: blur(12px); cursor: pointer; z-index: 5; opacity: 0; transition: opacity .25s ease, transform .25s ease, background .25s ease; }
         .cover-nav svg { width: 19px; height: 19px; }
@@ -35,38 +35,28 @@
         .timeline-stat:hover .stat-icon { transform: rotate(-4deg) scale(1.05); }
         .timeline-stat .stat-icon { transition: transform .35s ease; }
         .comment-section{max-width:1120px;margin:20px auto 90px;padding:0 24px}.comment-panel{padding:32px;border:1px solid rgba(255,255,255,.1);border-radius:28px;background:linear-gradient(135deg,rgba(30,41,59,.72),rgba(15,23,42,.8));backdrop-filter:blur(16px)}.comment-head{display:flex;justify-content:space-between;gap:20px;align-items:end;margin-bottom:24px}.comment-head h2{margin:6px 0 0;font-size:clamp(1.7rem,3vw,2.4rem)}.comment-head p{color:#94a3b8;margin:0}.comment-form{display:grid;grid-template-columns:220px 1fr auto;gap:12px;align-items:start}.comment-form input,.comment-form textarea{width:100%;box-sizing:border-box;border:1px solid rgba(255,255,255,.12);background:rgba(2,6,23,.48);color:#e2e8f0;border-radius:14px;padding:14px 16px;font:inherit;outline:none}.comment-form textarea{min-height:52px;resize:vertical}.comment-form input:focus,.comment-form textarea:focus{border-color:#818cf8;box-shadow:0 0 0 3px rgba(129,140,248,.12)}.comment-submit{border:0;border-radius:14px;padding:14px 20px;min-height:52px;background:linear-gradient(135deg,#60a5fa,#8b5cf6);color:white;font:inherit;font-weight:700;cursor:pointer}.comment-submit:disabled{opacity:.6;cursor:not-allowed}.comment-status{min-height:22px;margin:14px 0 4px;color:#94a3b8;font-size:.92rem}.comment-list{display:grid;gap:12px;margin-top:24px}.comment-item{padding:18px;border:1px solid rgba(255,255,255,.08);border-radius:18px;background:rgba(15,23,42,.42)}.comment-meta{display:flex;justify-content:space-between;gap:16px;margin-bottom:9px}.comment-name{font-weight:700}.comment-time{color:#64748b;font-size:.85rem;white-space:nowrap}.comment-text{margin:0;color:#cbd5e1;line-height:1.65;white-space:pre-wrap;word-break:break-word}.comment-empty{text-align:center;color:#64748b;padding:24px}.comment-retry{margin-top:10px;border:1px solid rgba(255,255,255,.15);background:transparent;color:#cbd5e1;border-radius:10px;padding:9px 13px;cursor:pointer}@media(max-width:760px){.comment-section{padding:0 16px}.comment-panel{padding:22px}.comment-head{align-items:start;flex-direction:column}.comment-form{grid-template-columns:1fr}.comment-submit{width:100%}.comment-meta{align-items:flex-start;flex-direction:column;gap:4px}}
+        .album-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+        .album-grid.category-two-columns { grid-template-columns: repeat(2, minmax(0, 1fr)); }
         @media (min-width: 1101px) { .stats-grid { grid-template-columns: repeat(5,1fr); } }
-        @media (max-width: 1100px) and (min-width: 701px) { .stats-grid { grid-template-columns: repeat(3,1fr); } }
-        @media (max-width: 700px) { .stats-grid { grid-template-columns: repeat(2,1fr); } .cover-nav { opacity: 1; width: 38px; height: 38px; } }
+        @media (max-width: 1100px) and (min-width: 769px) { .stats-grid { grid-template-columns: repeat(3,1fr); } }
+        @media (max-width: 768px) { .stats-grid { grid-template-columns: repeat(2,1fr); } .album-grid,.album-grid.category-two-columns { grid-template-columns: 1fr; } .cover-nav { opacity: 1; width: 38px; height: 38px; } }
         @media (max-width: 480px) { .stats-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 
 <body>
     <div id="loader"><div class="loader-logo">📸</div><h1>GalaXXI Archive</h1><p>Loading memories...</p></div>
-
     <div class="background"><div class="aurora aurora-1"></div><div class="aurora aurora-2"></div><div class="aurora aurora-3"></div><div class="noise"></div></div>
-
     <header><nav class="navbar"><a href="#" class="logo"><div class="logo-icon"><i data-lucide="images"></i></div><div class="logo-text"><h2>GalaXXI</h2><span>Archive</span></div></a><div class="nav-right"><button id="themeToggle" class="icon-button" aria-label="Dark Mode"><i data-lucide="moon-star"></i></button></div></nav></header>
-
     <section class="hero"><div class="hero-content"><span class="hero-badge">📷 Personal Photo Archive</span><h1>Every Memory<br><span>Has Its Place.</span></h1><p>Simpan seluruh album Google Drive dalam satu tempat yang elegan, mudah dicari, dan nyaman diakses kapan pun.</p><div class="hero-buttons"><a href="#albums" class="btn-primary">Jelajahi Album</a><a href="stats.html" class="btn-secondary">Lihat Statistik</a></div></div><div class="hero-visual"><div class="planet"><div class="planet-ring"></div><div class="planet-glow"></div></div></div></section>
-
     <section class="featured-dashboard"><div class="featured-left"><span class="section-badge">⭐ Featured Album</span><div class="featured-card"><div class="featured-cover"><img id="featuredCover" src="assets/covers/default.webp" alt="Featured Album"></div><div class="featured-content"><span class="featured-category">Sekolah</span><h2 id="featuredTitle">Class Meeting 2026</h2><p id="featuredDescription">Album pilihan yang akan ditampilkan secara otomatis dari albums.js.</p><div class="featured-info"><span id="featuredDate">📅 24 Mei 2026</span><span id="featuredPhotos">📷 156 Foto</span></div><a id="featuredLink" href="#" target="_blank" rel="noopener noreferrer" class="btn-primary">Buka Album</a></div></div></div><div class="hero-mini-stats"><div class="mini-card"><h2 id="miniAlbum">0</h2><p>Album</p></div><div class="mini-card"><h2 id="miniPhoto">0</h2><p>Foto</p></div><div class="mini-card"><h2>Drive</h2><p>Cloud</p></div><div class="mini-card"><h2 id="miniCategory">0</h2><p>Kategori</p></div></div></section>
-
     <section class="section-title"><div><span>📚 Collection</span><h2>Semua Album</h2></div></section><section class="search-section"><div class="search-wrapper"><div class="search-box"><i data-lucide="search"></i><input type="text" id="searchInput" placeholder="Cari album..."></div></div></section>
-
     <section id="stats" class="stats-section"><div class="stats-grid"><div class="stat-card"><div class="stat-icon"><i data-lucide="folder-open"></i></div><div><h2 id="albumCount">0</h2><p>Album</p></div></div><div class="stat-card"><div class="stat-icon"><i data-lucide="image"></i></div><div><h2 id="photoCount">0</h2><p>Total Foto</p></div></div><a id="driveStat" class="stat-card stat-card-link" href="drive.html" aria-label="Lihat daftar Google Drive"><div class="stat-icon"><i data-lucide="cloud"></i></div><div><h2>Drive</h2><p>Google Drive</p></div></a><div class="stat-card"><div class="stat-icon"><i data-lucide="tag"></i></div><div><h2 id="categoryCount">0</h2><p>Kategori</p></div></div><a class="stat-card stat-card-link timeline-stat" href="timeline.html" aria-label="Lihat Timeline GalaXXI"><div class="stat-icon"><i data-lucide="route"></i></div><div><h2>Timeline</h2><p>GalaXXI Journey</p></div></a></div></section>
-
     <section class="category-section"><div class="category-wrapper"><button class="category active" data-category="Semua">Semua</button></div></section><main id="albums" class="main-content"><section id="albumContainer" class="album-grid"></section></main>
-
     <template id="albumTemplate"><article class="album-card"><div class="album-cover"><img class="cover-image" src="" alt="Album Cover"><button class="cover-nav cover-prev" type="button" aria-label="Foto sebelumnya"><i data-lucide="chevron-left"></i></button><button class="cover-nav cover-next" type="button" aria-label="Foto berikutnya"><i data-lucide="chevron-right"></i></button><div class="cover-placeholder"><i data-lucide="camera"></i></div></div><div class="album-content"><span class="album-category"></span><h3 class="album-title"></h3><p class="album-description"></p><div class="album-info"><div><i data-lucide="calendar-days"></i><span class="album-date"></span></div><div><i data-lucide="images"></i><span class="album-total"></span></div></div><a class="open-button" target="_blank" rel="noopener noreferrer"><span>Buka Album</span><i data-lucide="arrow-up-right"></i></a></div></article></template>
-
     <section id="emptyState" class="empty-state hidden"><div class="empty-icon"><i data-lucide="folder-search"></i></div><h2>Album tidak ditemukan</h2><p>Coba gunakan kata kunci lain atau pilih kategori yang berbeda.</p></section>
-
     <section id="comments" class="comment-section"><div class="comment-panel"><div class="comment-head"><div><span class="section-badge">💬 Guestbook</span><h2>Tinggalkan Jejak</h2></div><p>Tanpa login. Nama boleh anonim atau pakai nama sendiri.</p></div><form id="commentForm" class="comment-form"><input id="commentName" type="text" maxlength="40" placeholder="Nama, atau biarkan kosong untuk Anonymous"><textarea id="commentText" maxlength="1000" required placeholder="Tulis komentar untuk GalaXXI Archive..."></textarea><button id="commentSubmit" class="comment-submit" type="submit">Kirim</button></form><div id="commentStatus" class="comment-status" aria-live="polite"></div><div id="commentList" class="comment-list"><div class="comment-empty">Memuat komentar...</div></div></div></section>
-
     <button id="backToTop" class="back-to-top" aria-label="Kembali ke atas"><i data-lucide="arrow-up"></i></button><div id="scrollProgress" class="scroll-progress"></div><div id="toast" class="toast"><i data-lucide="check-circle"></i><span>Berhasil dibuka.</span></div>
-
     <footer class="footer"><div class="footer-content"><div class="footer-brand"><div class="footer-logo"><i data-lucide="images"></i></div><div><h2>GalaXXI Archive</h2><p>Every Memory Has Its Place.</p></div></div><div class="footer-links"><a href="#">Home</a><a href="#albums">Album</a><a href="stats.html">Statistik</a><a href="timeline.html">Timeline</a><a href="#comments">Komentar</a></div></div><div class="footer-bottom"><p>© 2026 GalaXXI Archive</p><span>Made with ❤️ by Gandy</span></div></footer>
 
     <script src="albums.js"></script><script src="script.js"></script>
@@ -81,6 +71,22 @@
     commentForm.addEventListener('submit',async e=>{e.preventDefault();const comment=commentText.value.trim();const name=commentName.value.trim()||'Anonymous';if(!comment)return;commentSubmit.disabled=true;commentSubmit.textContent='Mengirim...';setStatus('');try{const res=await fetch(SUPABASE_URL+'/comments',{method:'POST',headers:{apikey:SUPABASE_KEY,Authorization:'Bearer '+SUPABASE_KEY,'Content-Type':'application/json',Prefer:'return=representation'},body:JSON.stringify({name,comment})});if(!res.ok)throw new Error(await res.text());const rows=await res.json();commentText.value='';setStatus('Komentar berhasil dikirim ✨');await loadComments()}catch(err){console.error('Supabase insert error:',err);setStatus('Komentar belum berhasil dikirim. Coba lagi beberapa saat.') }finally{commentSubmit.disabled=false;commentSubmit.textContent='Kirim'}});
     loadComments();
     lucide.createIcons();
+
+    (function(){
+        const container=document.getElementById('albumContainer');
+        const wrapper=document.querySelector('.category-wrapper');
+        if(!container||!wrapper)return;
+        const syncLayout=()=>{
+            const active=wrapper.querySelector('.category.active');
+            const category=active?.dataset.category||'Semua';
+            container.classList.toggle('category-two-columns',category!=='Semua');
+        };
+        syncLayout();
+        wrapper.addEventListener('click',event=>{
+            if(!event.target.closest('.category'))return;
+            requestAnimationFrame(syncLayout);
+        });
+    })();
     </script>
 </body>
 </html>
