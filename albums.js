@@ -212,3 +212,35 @@ const albums = [
     }
 
 ];
+
+/*==================================================
+    ALBUM LAYOUT OVERRIDE
+    Maksimal 2 kartu per baris dan thumbnail 16:9.
+    Tab/filter sengaja tidak diubah.
+==================================================*/
+(function injectAlbumLayout(){
+    const style = document.createElement("style");
+    style.textContent = `
+        .album-grid{
+            grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+        }
+
+        .album-cover{
+            height:auto !important;
+            aspect-ratio:16 / 9;
+        }
+
+        .cover-image{
+            width:100%;
+            height:100%;
+            object-fit:cover;
+        }
+
+        @media (max-width:760px){
+            .album-grid{
+                grid-template-columns:1fr !important;
+            }
+        }
+    `;
+    document.head.appendChild(style);
+})();
