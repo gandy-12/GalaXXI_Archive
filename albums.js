@@ -167,7 +167,49 @@ const albums = [
             "assets/covers/pw5.JPG"
         ],
         link: "https://drive.google.com/drive/folders/1JdO2LUDSLTzUWUpYyXo09fJyhpodp6l8?usp=sharing"
-    }
+    },
+
+        {
+        id: 10,
+        title: "Pawai cendekia at Lubuk Basung",
+        category: "Sekolah",
+        description: "Wonderful performance cendekia at lubuk basung.",
+        date: "18 Agustus 2026",
+        photos: 0,
+        unlimited: false,
+        featured: false,
+        cover: "assets/covers/.JPG",
+        covers: [
+            "assets/covers/.JPG",
+            "assets/covers/.JPG",
+            "assets/covers/.JPG",
+            "assets/covers/.JPG",
+            "assets/covers/.JPG"
+        ],
+        link: "https://drive.google.com/drive/folders/1fOx6FNRHSVk1fxuLy_hwNYG10eJdAb1x?usp=sharing"
+    },
+
+      {
+        id: 11,
+        title: "Last walking GalaXXI",
+        category: "Angkatan",
+        description: "Our last walking at cendekia.",
+        date: "18 Agustus 2026",
+        photos: 0,
+        unlimited: false,
+        featured: false,
+        cover: "assets/covers/.JPG",
+        covers: [
+            "assets/covers/.JPG",
+            "assets/covers/.JPG",
+            "assets/covers/.JPG",
+            "assets/covers/.JPG",
+            "assets/covers/.JPG"
+        ],
+        link: "https://drive.google.com/drive/folders/14fUf4_BjTO8iHg8i6DTiQLE8cAT8Dgib?usp=sharing"
+    },
+
+
 ];
 
 /*==================================================
