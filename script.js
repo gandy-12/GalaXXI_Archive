@@ -1,6 +1,6 @@
 /*==================================================
     GalaXXI Archive
-    Version 1.6.1
+    Version 1.6.2
 ==================================================*/
 
 "use strict";
@@ -116,6 +116,7 @@ const App = {
         this.state.filteredAlbums.forEach(album => {
             const clone = this.dom.albumTemplate.content.cloneNode(true);
             const cover = clone.querySelector(".cover-image");
+            const placeholder = clone.querySelector(".cover-placeholder");
             const title = clone.querySelector(".album-title");
             const description = clone.querySelector(".album-description");
             const category = clone.querySelector(".album-category");
@@ -128,12 +129,27 @@ const App = {
             const covers = this.getAlbumCovers(album);
             let currentIndex = 0;
 
+            const setPlaceholderState = showPlaceholder => {
+                if (cover) cover.style.display = showPlaceholder ? "none" : "block";
+                if (placeholder) placeholder.style.display = showPlaceholder ? "flex" : "none";
+            };
+
             const showCover = index => {
-                if (!cover || covers.length === 0) return;
+                if (!cover || covers.length === 0) {
+                    setPlaceholderState(true);
+                    return;
+                }
                 currentIndex = (index + covers.length) % covers.length;
+                setPlaceholderState(false);
                 cover.src = covers[currentIndex];
                 cover.alt = `${album.title} - Foto ${currentIndex + 1}`;
             };
+
+            if (cover) {
+                cover.addEventListener("load", () => setPlaceholderState(false));
+                cover.addEventListener("error", () => setPlaceholderState(true));
+            }
+
             showCover(0);
             if (title) title.textContent = album.title;
             if (description) description.textContent = album.description;
