@@ -34,6 +34,7 @@
         .timeline-stat { cursor: pointer; }
         .timeline-stat:hover .stat-icon { transform: rotate(-4deg) scale(1.05); }
         .timeline-stat .stat-icon { transition: transform .35s ease; }
+        .comment-section{max-width:1120px;margin:20px auto 90px;padding:0 24px}.comment-panel{padding:32px;border:1px solid rgba(255,255,255,.1);border-radius:28px;background:linear-gradient(135deg,rgba(30,41,59,.72),rgba(15,23,42,.8));backdrop-filter:blur(16px)}.comment-head{display:flex;justify-content:space-between;gap:20px;align-items:end;margin-bottom:24px}.comment-head h2{margin:6px 0 0;font-size:clamp(1.7rem,3vw,2.4rem)}.comment-head p{color:#94a3b8;margin:0}.comment-form{display:grid;grid-template-columns:220px 1fr auto;gap:12px;align-items:start}.comment-form input,.comment-form textarea{width:100%;box-sizing:border-box;border:1px solid rgba(255,255,255,.12);background:rgba(2,6,23,.48);color:#e2e8f0;border-radius:14px;padding:14px 16px;font:inherit;outline:none}.comment-form textarea{min-height:52px;resize:vertical}.comment-form input:focus,.comment-form textarea:focus{border-color:#818cf8;box-shadow:0 0 0 3px rgba(129,140,248,.12)}.comment-submit{border:0;border-radius:14px;padding:14px 20px;min-height:52px;background:linear-gradient(135deg,#60a5fa,#8b5cf6);color:white;font:inherit;font-weight:700;cursor:pointer}.comment-submit:disabled{opacity:.6;cursor:not-allowed}.comment-status{min-height:22px;margin:14px 0 4px;color:#94a3b8;font-size:.92rem}.comment-list{display:grid;gap:12px;margin-top:24px}.comment-item{padding:18px;border:1px solid rgba(255,255,255,.08);border-radius:18px;background:rgba(15,23,42,.42)}.comment-meta{display:flex;justify-content:space-between;gap:16px;margin-bottom:9px}.comment-name{font-weight:700}.comment-time{color:#64748b;font-size:.85rem;white-space:nowrap}.comment-text{margin:0;color:#cbd5e1;line-height:1.65;white-space:pre-wrap;word-break:break-word}.comment-empty{text-align:center;color:#64748b;padding:24px}.comment-retry{margin-top:10px;border:1px solid rgba(255,255,255,.15);background:transparent;color:#cbd5e1;border-radius:10px;padding:9px 13px;cursor:pointer}@media(max-width:760px){.comment-section{padding:0 16px}.comment-panel{padding:22px}.comment-head{align-items:start;flex-direction:column}.comment-form{grid-template-columns:1fr}.comment-submit{width:100%}.comment-meta{align-items:flex-start;flex-direction:column;gap:4px}}
         @media (min-width: 1101px) { .stats-grid { grid-template-columns: repeat(5,1fr); } }
         @media (max-width: 1100px) and (min-width: 701px) { .stats-grid { grid-template-columns: repeat(3,1fr); } }
         @media (max-width: 700px) { .stats-grid { grid-template-columns: repeat(2,1fr); } .cover-nav { opacity: 1; width: 38px; height: 38px; } }
@@ -46,83 +47,40 @@
 
     <div class="background"><div class="aurora aurora-1"></div><div class="aurora aurora-2"></div><div class="aurora aurora-3"></div><div class="noise"></div></div>
 
-    <header>
-        <nav class="navbar">
-            <a href="#" class="logo"><div class="logo-icon"><i data-lucide="images"></i></div><div class="logo-text"><h2>GalaXXI</h2><span>Archive</span></div></a>
-            <div class="nav-right"><button id="themeToggle" class="icon-button" aria-label="Dark Mode"><i data-lucide="moon-star"></i></button></div>
-        </nav>
-    </header>
+    <header><nav class="navbar"><a href="#" class="logo"><div class="logo-icon"><i data-lucide="images"></i></div><div class="logo-text"><h2>GalaXXI</h2><span>Archive</span></div></a><div class="nav-right"><button id="themeToggle" class="icon-button" aria-label="Dark Mode"><i data-lucide="moon-star"></i></button></div></nav></header>
 
-    <section class="hero">
-        <div class="hero-content">
-            <span class="hero-badge">📷 Personal Photo Archive</span>
-            <h1>Every Memory<br><span>Has Its Place.</span></h1>
-            <p>Simpan seluruh album Google Drive dalam satu tempat yang elegan, mudah dicari, dan nyaman diakses kapan pun.</p>
-            <div class="hero-buttons">
-                <a href="#albums" class="btn-primary">Jelajahi Album</a>
-                <a href="stats.html" class="btn-secondary">Lihat Statistik</a>
-            </div>
-        </div>
-        <div class="hero-visual"><div class="planet"><div class="planet-ring"></div><div class="planet-glow"></div></div></div>
-    </section>
+    <section class="hero"><div class="hero-content"><span class="hero-badge">📷 Personal Photo Archive</span><h1>Every Memory<br><span>Has Its Place.</span></h1><p>Simpan seluruh album Google Drive dalam satu tempat yang elegan, mudah dicari, dan nyaman diakses kapan pun.</p><div class="hero-buttons"><a href="#albums" class="btn-primary">Jelajahi Album</a><a href="stats.html" class="btn-secondary">Lihat Statistik</a></div></div><div class="hero-visual"><div class="planet"><div class="planet-ring"></div><div class="planet-glow"></div></div></div></section>
 
-    <section class="featured-dashboard">
-        <div class="featured-left">
-            <span class="section-badge">⭐ Featured Album</span>
-            <div class="featured-card">
-                <div class="featured-cover"><img id="featuredCover" src="assets/covers/default.webp" alt="Featured Album"></div>
-                <div class="featured-content">
-                    <span class="featured-category">Sekolah</span>
-                    <h2 id="featuredTitle">Class Meeting 2026</h2>
-                    <p id="featuredDescription">Album pilihan yang akan ditampilkan secara otomatis dari albums.js.</p>
-                    <div class="featured-info"><span id="featuredDate">📅 24 Mei 2026</span><span id="featuredPhotos">📷 156 Foto</span></div>
-                    <a id="featuredLink" href="#" target="_blank" rel="noopener noreferrer" class="btn-primary">Buka Album</a>
-                </div>
-            </div>
-        </div>
-        <div class="hero-mini-stats">
-            <div class="mini-card"><h2 id="miniAlbum">0</h2><p>Album</p></div>
-            <div class="mini-card"><h2 id="miniPhoto">0</h2><p>Foto</p></div>
-            <div class="mini-card"><h2>Drive</h2><p>Cloud</p></div>
-            <div class="mini-card"><h2 id="miniCategory">0</h2><p>Kategori</p></div>
-        </div>
-    </section>
+    <section class="featured-dashboard"><div class="featured-left"><span class="section-badge">⭐ Featured Album</span><div class="featured-card"><div class="featured-cover"><img id="featuredCover" src="assets/covers/default.webp" alt="Featured Album"></div><div class="featured-content"><span class="featured-category">Sekolah</span><h2 id="featuredTitle">Class Meeting 2026</h2><p id="featuredDescription">Album pilihan yang akan ditampilkan secara otomatis dari albums.js.</p><div class="featured-info"><span id="featuredDate">📅 24 Mei 2026</span><span id="featuredPhotos">📷 156 Foto</span></div><a id="featuredLink" href="#" target="_blank" rel="noopener noreferrer" class="btn-primary">Buka Album</a></div></div></div><div class="hero-mini-stats"><div class="mini-card"><h2 id="miniAlbum">0</h2><p>Album</p></div><div class="mini-card"><h2 id="miniPhoto">0</h2><p>Foto</p></div><div class="mini-card"><h2>Drive</h2><p>Cloud</p></div><div class="mini-card"><h2 id="miniCategory">0</h2><p>Kategori</p></div></div></section>
 
-    <section class="section-title"><div><span>📚 Collection</span><h2>Semua Album</h2></div></section>
-    <section class="search-section"><div class="search-wrapper"><div class="search-box"><i data-lucide="search"></i><input type="text" id="searchInput" placeholder="Cari album..."></div></div></section>
+    <section class="section-title"><div><span>📚 Collection</span><h2>Semua Album</h2></div></section><section class="search-section"><div class="search-wrapper"><div class="search-box"><i data-lucide="search"></i><input type="text" id="searchInput" placeholder="Cari album..."></div></div></section>
 
-    <section id="stats" class="stats-section">
-        <div class="stats-grid">
-            <div class="stat-card"><div class="stat-icon"><i data-lucide="folder-open"></i></div><div><h2 id="albumCount">0</h2><p>Album</p></div></div>
-            <div class="stat-card"><div class="stat-icon"><i data-lucide="image"></i></div><div><h2 id="photoCount">0</h2><p>Total Foto</p></div></div>
-            <a id="driveStat" class="stat-card stat-card-link" href="drive.html" aria-label="Lihat daftar Google Drive"><div class="stat-icon"><i data-lucide="cloud"></i></div><div><h2>Drive</h2><p>Google Drive</p></div></a>
-            <div class="stat-card"><div class="stat-icon"><i data-lucide="tag"></i></div><div><h2 id="categoryCount">0</h2><p>Kategori</p></div></div>
-            <a class="stat-card stat-card-link timeline-stat" href="timeline.html" aria-label="Lihat Timeline GalaXXI"><div class="stat-icon"><i data-lucide="route"></i></div><div><h2>Timeline</h2><p>GalaXXI Journey</p></div></a>
-        </div>
-    </section>
+    <section id="stats" class="stats-section"><div class="stats-grid"><div class="stat-card"><div class="stat-icon"><i data-lucide="folder-open"></i></div><div><h2 id="albumCount">0</h2><p>Album</p></div></div><div class="stat-card"><div class="stat-icon"><i data-lucide="image"></i></div><div><h2 id="photoCount">0</h2><p>Total Foto</p></div></div><a id="driveStat" class="stat-card stat-card-link" href="drive.html" aria-label="Lihat daftar Google Drive"><div class="stat-icon"><i data-lucide="cloud"></i></div><div><h2>Drive</h2><p>Google Drive</p></div></a><div class="stat-card"><div class="stat-icon"><i data-lucide="tag"></i></div><div><h2 id="categoryCount">0</h2><p>Kategori</p></div></div><a class="stat-card stat-card-link timeline-stat" href="timeline.html" aria-label="Lihat Timeline GalaXXI"><div class="stat-icon"><i data-lucide="route"></i></div><div><h2>Timeline</h2><p>GalaXXI Journey</p></div></a></div></section>
 
-    <section class="category-section"><div class="category-wrapper"><button class="category active" data-category="Semua">Semua</button></div></section>
-    <main id="albums" class="main-content"><section id="albumContainer" class="album-grid"></section></main>
+    <section class="category-section"><div class="category-wrapper"><button class="category active" data-category="Semua">Semua</button></div></section><main id="albums" class="main-content"><section id="albumContainer" class="album-grid"></section></main>
 
-    <template id="albumTemplate">
-        <article class="album-card">
-            <div class="album-cover"><img class="cover-image" src="" alt="Album Cover"><button class="cover-nav cover-prev" type="button" aria-label="Foto sebelumnya"><i data-lucide="chevron-left"></i></button><button class="cover-nav cover-next" type="button" aria-label="Foto berikutnya"><i data-lucide="chevron-right"></i></button><div class="cover-placeholder"><i data-lucide="camera"></i></div></div>
-            <div class="album-content"><span class="album-category"></span><h3 class="album-title"></h3><p class="album-description"></p><div class="album-info"><div><i data-lucide="calendar-days"></i><span class="album-date"></span></div><div><i data-lucide="images"></i><span class="album-total"></span></div></div><a class="open-button" target="_blank" rel="noopener noreferrer"><span>Buka Album</span><i data-lucide="arrow-up-right"></i></a></div>
-        </article>
-    </template>
+    <template id="albumTemplate"><article class="album-card"><div class="album-cover"><img class="cover-image" src="" alt="Album Cover"><button class="cover-nav cover-prev" type="button" aria-label="Foto sebelumnya"><i data-lucide="chevron-left"></i></button><button class="cover-nav cover-next" type="button" aria-label="Foto berikutnya"><i data-lucide="chevron-right"></i></button><div class="cover-placeholder"><i data-lucide="camera"></i></div></div><div class="album-content"><span class="album-category"></span><h3 class="album-title"></h3><p class="album-description"></p><div class="album-info"><div><i data-lucide="calendar-days"></i><span class="album-date"></span></div><div><i data-lucide="images"></i><span class="album-total"></span></div></div><a class="open-button" target="_blank" rel="noopener noreferrer"><span>Buka Album</span><i data-lucide="arrow-up-right"></i></a></div></article></template>
 
     <section id="emptyState" class="empty-state hidden"><div class="empty-icon"><i data-lucide="folder-search"></i></div><h2>Album tidak ditemukan</h2><p>Coba gunakan kata kunci lain atau pilih kategori yang berbeda.</p></section>
-    <button id="backToTop" class="back-to-top" aria-label="Kembali ke atas"><i data-lucide="arrow-up"></i></button>
-    <div id="scrollProgress" class="scroll-progress"></div>
-    <div id="toast" class="toast"><i data-lucide="check-circle"></i><span>Berhasil dibuka.</span></div>
 
-    <footer class="footer">
-        <div class="footer-content"><div class="footer-brand"><div class="footer-logo"><i data-lucide="images"></i></div><div><h2>GalaXXI Archive</h2><p>Every Memory Has Its Place.</p></div></div><div class="footer-links"><a href="#">Home</a><a href="#albums">Album</a><a href="stats.html">Statistik</a><a href="timeline.html">Timeline</a></div></div>
-        <div class="footer-bottom"><p>© 2026 GalaXXI Archive</p><span>Made with ❤️ by Gandy</span></div>
-    </footer>
+    <section id="comments" class="comment-section"><div class="comment-panel"><div class="comment-head"><div><span class="section-badge">💬 Guestbook</span><h2>Tinggalkan Jejak</h2></div><p>Tanpa login. Nama boleh anonim atau pakai nama sendiri.</p></div><form id="commentForm" class="comment-form"><input id="commentName" type="text" maxlength="40" placeholder="Nama, atau biarkan kosong untuk Anonymous"><textarea id="commentText" maxlength="1000" required placeholder="Tulis komentar untuk GalaXXI Archive..."></textarea><button id="commentSubmit" class="comment-submit" type="submit">Kirim</button></form><div id="commentStatus" class="comment-status" aria-live="polite"></div><div id="commentList" class="comment-list"><div class="comment-empty">Memuat komentar...</div></div></div></section>
 
-    <script src="albums.js"></script>
-    <script src="script.js"></script>
-    <script>lucide.createIcons();</script>
+    <button id="backToTop" class="back-to-top" aria-label="Kembali ke atas"><i data-lucide="arrow-up"></i></button><div id="scrollProgress" class="scroll-progress"></div><div id="toast" class="toast"><i data-lucide="check-circle"></i><span>Berhasil dibuka.</span></div>
+
+    <footer class="footer"><div class="footer-content"><div class="footer-brand"><div class="footer-logo"><i data-lucide="images"></i></div><div><h2>GalaXXI Archive</h2><p>Every Memory Has Its Place.</p></div></div><div class="footer-links"><a href="#">Home</a><a href="#albums">Album</a><a href="stats.html">Statistik</a><a href="timeline.html">Timeline</a><a href="#comments">Komentar</a></div></div><div class="footer-bottom"><p>© 2026 GalaXXI Archive</p><span>Made with ❤️ by Gandy</span></div></footer>
+
+    <script src="albums.js"></script><script src="script.js"></script>
+    <script>
+    const SUPABASE_URL='https://jtrhxphcjkczrdsquycp.supabase.co/rest/v1';
+    const SUPABASE_KEY='sb_publishable_Y1m4gNHjiiS6SVwBVpfmng_NRA8uO_7';
+    const commentList=document.getElementById('commentList'),commentForm=document.getElementById('commentForm'),commentName=document.getElementById('commentName'),commentText=document.getElementById('commentText'),commentStatus=document.getElementById('commentStatus'),commentSubmit=document.getElementById('commentSubmit');
+    function setStatus(text){commentStatus.textContent=text}
+    function formatTime(value){try{return new Intl.DateTimeFormat('id-ID',{dateStyle:'medium',timeStyle:'short'}).format(new Date(value))}catch(e){return ''}}
+    function renderComments(rows){commentList.innerHTML='';if(!rows||!rows.length){commentList.innerHTML='<div class="comment-empty">Belum ada komentar. Jadilah yang pertama menulis sesuatu ✨</div>';return}rows.forEach(row=>{const item=document.createElement('article');item.className='comment-item';const meta=document.createElement('div');meta.className='comment-meta';const name=document.createElement('span');name.className='comment-name';name.textContent=row.name&&row.name.trim()?row.name:'Anonymous';const time=document.createElement('span');time.className='comment-time';time.textContent=formatTime(row.created_at);const text=document.createElement('p');text.className='comment-text';text.textContent=row.comment||'';meta.append(name,time);item.append(meta,text);commentList.appendChild(item)})}
+    async function loadComments(){setStatus('');commentList.innerHTML='<div class="comment-empty">Memuat komentar...</div>';try{const res=await fetch(SUPABASE_URL+'/comments?select=id,name,comment,created_at&order=created_at.desc&limit=100',{headers:{apikey:SUPABASE_KEY,Authorization:'Bearer '+SUPABASE_KEY}});if(!res.ok)throw new Error(await res.text());renderComments(await res.json())}catch(err){commentList.innerHTML='<div class="comment-empty">Komentar belum bisa dimuat.<br><button class="comment-retry" type="button" id="retryComments">Coba lagi</button></div>';document.getElementById('retryComments').onclick=loadComments;console.error('Supabase load error:',err)}}
+    commentForm.addEventListener('submit',async e=>{e.preventDefault();const comment=commentText.value.trim();const name=commentName.value.trim()||'Anonymous';if(!comment)return;commentSubmit.disabled=true;commentSubmit.textContent='Mengirim...';setStatus('');try{const res=await fetch(SUPABASE_URL+'/comments',{method:'POST',headers:{apikey:SUPABASE_KEY,Authorization:'Bearer '+SUPABASE_KEY,'Content-Type':'application/json',Prefer:'return=representation'},body:JSON.stringify({name,comment})});if(!res.ok)throw new Error(await res.text());const rows=await res.json();commentText.value='';setStatus('Komentar berhasil dikirim ✨');await loadComments()}catch(err){console.error('Supabase insert error:',err);setStatus('Komentar belum berhasil dikirim. Coba lagi beberapa saat.') }finally{commentSubmit.disabled=false;commentSubmit.textContent='Kirim'}});
+    loadComments();
+    lucide.createIcons();
+    </script>
 </body>
 </html>
