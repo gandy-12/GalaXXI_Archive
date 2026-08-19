@@ -29,15 +29,9 @@ const albums = [
         unlimited: false,
         featured: true,
         cover: "assets/covers/Pergantian Pangkat.jpg",
-        covers: [
-            "assets/covers/Pergantian Pangkat.jpg"
-        ],
+        covers: ["assets/covers/Pergantian Pangkat.jpg"],
         link: "https://drive.google.com/drive/folders/1Orukhi1sVJvXJdeMssnmhlyiwCBg1bLt?usp=sharing"
     },
-
-    /*==============================================
-        ALBUM 02
-    ==============================================*/
     {
         id: 2,
         title: "Pelantikan OSIS & PMR 2026",
@@ -48,15 +42,9 @@ const albums = [
         unlimited: false,
         featured: false,
         cover: "assets/covers/Osis PMR.JPG",
-        covers: [
-            "assets/covers/Osis PMR.JPG"
-        ],
+        covers: ["assets/covers/Osis PMR.JPG"],
         link: "https://drive.google.com/drive/folders/1SF6vQenVT4lPm-8XMi-XFTpG4g22OBia?usp=drive_link"
     },
-
-    /*==============================================
-        ALBUM 03
-    ==============================================*/
     {
         id: 3,
         title: "Ramadhan GalaXXI",
@@ -67,15 +55,9 @@ const albums = [
         unlimited: false,
         featured: false,
         cover: "assets/covers/Ramadhan.jpg",
-        covers: [
-            "assets/covers/Ramadhan.jpg"
-        ],
+        covers: ["assets/covers/Ramadhan.jpg"],
         link: "https://drive.google.com/drive/folders/1s4jPLm-2uRg-u4EU_L9U3NzckBrX_sQm?usp=drive_link"
     },
-
-    /*==============================================
-        ALBUM 04
-    ==============================================*/
     {
         id: 4,
         title: "GalaXXI Camping Part 1",
@@ -95,10 +77,6 @@ const albums = [
         ],
         link: "https://drive.google.com/drive/folders/1Bz7MBLhcFSi5iSd5wRbcZRw1yV_I3_96?usp=drive_link"
     },
-
-    /*==============================================
-        ALBUM 05
-    ==============================================*/
     {
         id: 5,
         title: "GalaXXI Camping Part 2",
@@ -117,10 +95,6 @@ const albums = [
         ],
         link: "https://drive.google.com/drive/folders/1CJGuYq175tQG0n3_fdAXaTNOd3nNGfCe?usp=drive_link"
     },
-
-    /*==============================================
-        ALBUM 06
-    ==============================================*/
     {
         id: 6,
         title: "Behind The Scene Camping GalaXXI",
@@ -130,18 +104,10 @@ const albums = [
         photos: 0,
         unlimited: false,
         featured: false,
-        // File bts 1-4 di repo ternyata bukan file gambar yang valid.
-        // Gunakan foto Camping yang valid sebagai thumbnail sementara.
         cover: "assets/covers/pr a.JPG",
-        covers: [
-            "assets/covers/pr a.JPG"
-        ],
+        covers: ["assets/covers/pr a.JPG"],
         link: "https://drive.google.com/drive/folders/1Nx5mXzFnwk3QPumpugaf4ysqUMCuzsyw?usp=drive_link"
     },
-
-    /*==============================================
-        ALBUM 07
-    ==============================================*/
     {
         id: 7,
         title: "GalaXXI at perpisahan AleXXander",
@@ -163,10 +129,6 @@ const albums = [
         ],
         link: "https://drive.google.com/drive/folders/1Nx5mXzFnwk3QPumpugaf4ysqUMCuzsyw?usp=drive_link"
     },
-
-    /*==============================================
-        ALBUM 08
-    ==============================================*/
     {
         id: 8,
         title: "GalaXXI P5; Market Day",
@@ -187,10 +149,6 @@ const albums = [
         ],
         link: "https://drive.google.com/drive/folders/1ljKpjsU-VhX9kZTTGqYlCD9e0JxYH5Ay?usp=sharing"
     },
-
-    /*==============================================
-        ALBUM 09
-    ==============================================*/
     {
         id: 9,
         title: "Before Cendekia's Pawai",
@@ -210,7 +168,6 @@ const albums = [
         ],
         link: "https://drive.google.com/drive/folders/1JdO2LUDSLTzUWUpYyXo09fJyhpodp6l8?usp=sharing"
     }
-
 ];
 
 /*==================================================
@@ -234,6 +191,12 @@ const albums = [
             width:100%;
             height:100%;
             object-fit:cover;
+        }
+
+        /* Thumbnail kosong tetap tampil, tetapi tanpa ikon kamera. */
+        .cover-placeholder > i,
+        .cover-placeholder > svg{
+            display:none !important;
         }
 
         @media (max-width:760px){
