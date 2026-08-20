@@ -76,8 +76,8 @@ const albums = [
             "assets/covers/pramuka d.JPG",
             "assets/covers/pramuka e.JPG"
         ],
-        link: "https://drive.google.com/drive/folders/1Bz7MBLhcFSi5iSd5wRbcZRw1yV_I3_96?usp=drive_link"
-         access: "public",
+        link: "https://drive.google.com/drive/folders/1Bz7MBLhcFSi5iSd5wRbcZRw1yV_I3_96?usp=drive_link",
+        access: "public"
     },
     {
         id: 5,
@@ -95,8 +95,8 @@ const albums = [
             "assets/covers/pr c.JPG",
             "assets/covers/pr d.JPG"
         ],
-        link: "https://drive.google.com/drive/folders/1CJGuYq175tQG0n3_fdAXaTNOd3nNGfCe?usp=drive_link"
-         access: "public",
+        link: "https://drive.google.com/drive/folders/1CJGuYq175tQG0n3_fdAXaTNOd3nNGfCe?usp=drive_link",
+        access: "public"
     },
     {
         id: 6,
@@ -111,8 +111,8 @@ const albums = [
         covers: [
             "assets/covers/pr a.JPG"
         ],
-        link: "https://drive.google.com/drive/folders/1Nx5mXzFnwk3QPumpugaf4ysqUMCuzsyw?usp=drive_link"
-         access: "public",
+        link: "https://drive.google.com/drive/folders/1Nx5mXzFnwk3QPumpugaf4ysqUMCuzsyw?usp=drive_link",
+        access: "public"
     },
     {
         id: 7,
@@ -133,8 +133,8 @@ const albums = [
             "assets/covers/pps 6.JPG",
             "assets/covers/pps 7.JPG"
         ],
-        link: "https://drive.google.com/drive/folders/1Nx5mXzFnwk3QPumpugaf4ysqUMCuzsyw?usp=drive_link"
-         access: "public",
+        link: "https://drive.google.com/drive/folders/1Nx5mXzFnwk3QPumpugaf4ysqUMCuzsyw?usp=drive_link",
+        access: "public"
     },
     {
         id: 8,
@@ -192,8 +192,8 @@ const albums = [
             "assets/covers/.JPG",
             "assets/covers/.JPG"
         ],
-        link: "https://drive.google.com/drive/folders/1fOx6FNRHSVk1fxuLy_hwNYG10eJdAb1x?usp=sharing"
-         access: "public",
+        link: "https://drive.google.com/drive/folders/1fOx6FNRHSVk1fxuLy_hwNYG10eJdAb1x?usp=sharing",
+        access: "public"
     },
     {
         id: 11,
@@ -212,18 +212,13 @@ const albums = [
             "assets/covers/.JPG",
             "assets/covers/.JPG"
         ],
-        link: "https://drive.google.com/drive/folders/14fUf4_BjTO8iHg8i6DTiQLE8cAT8Dgib?usp=sharing"
-        access: "public",
+        link: "https://drive.google.com/drive/folders/14fUf4_BjTO8iHg8i6DTiQLE8cAT8Dgib?usp=sharing",
+        access: "public"
     }
 ];
 
 /*==================================================
     ALBUM ACCESS BADGES
-
-    Tambahkan salah satu pada album:
-
-    access: "belajar"
-    access: "public"
 ==================================================*/
 
 (function injectAlbumEnhancements() {
@@ -303,10 +298,7 @@ const albums = [
                 ?.textContent
                 ?.trim();
 
-            const album = albums.find(item => {
-                return item.title === title;
-            });
-
+            const album = albums.find(item => item.title === title);
             const content = card.querySelector(".album-content");
 
             if (
@@ -326,13 +318,10 @@ const albums = [
 
             const badge = document.createElement("span");
 
-            badge.className =
-                `album-access-badge access-${album.access}`;
+            badge.className = `album-access-badge access-${album.access}`;
 
             badge.innerHTML = `
-                <span class="access-icon" aria-hidden="true">
-                    ${access.icon}
-                </span>
+                <span class="access-icon" aria-hidden="true">${access.icon}</span>
                 <span>${access.label}</span>
             `;
 
@@ -347,9 +336,7 @@ const albums = [
     document.addEventListener("DOMContentLoaded", () => {
         const container = document.getElementById("albumContainer");
 
-        if (!container) {
-            return;
-        }
+        if (!container) return;
 
         new MutationObserver(addBadges).observe(container, {
             childList: true,
