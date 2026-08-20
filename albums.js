@@ -162,7 +162,7 @@ var albums = [
         link: "https://drive.google.com/drive/folders/14fUf4_BjTO8iHg8i6DTiQLE8cAT8Dgib?usp=sharing",
         access: "public"
     },
-     {
+    {
         id: 12,
         title: "Pawai Cendekia at Maninjau",
         category: "Sekolah",
@@ -177,7 +177,7 @@ var albums = [
         access: "public"
     },
     {
-    id: 13,
+        id: 13,
         title: "Upacara Bendera",
         category: "Sekolah",
         description: "Flag Ceremony SMAN Agam Cendekia (foto upacara hanya bertahan 1 bulan, karena drive terus dibersihkan).",
@@ -190,8 +190,8 @@ var albums = [
         link: "https://drive.google.com/drive/folders/14fUf4_BjTO8iHg8i6DTiQLE8cAT8Dgib?usp=sharing",
         access: "public"
     },
-    { 
-    id: 14,
+    {
+        id: 14,
         title: "Pelantikan Sispala 2026",
         category: "Organisasi",
         description: "Spectacular pawai Cendekia at Maninjau.",
@@ -275,4 +275,62 @@ window.albums = albums;
         new MutationObserver(addBadges).observe(container, { childList:true, subtree:true });
         addBadges();
     });
+})();
+
+/*==================================================
+    COMMENT PROFANITY FILTER
+    Komentar disensor sebelum dikirim ke Supabase.
+==================================================*/
+
+(function () {
+    const bannedWords = new Set([
+        "anjing", "bangsat", "bajingan", "kampret",
+        "goblok", "goblog", "tolol", "bego", "idiot",
+        "jancok", "keparat", "setan", "tai",
+        "kontol", "memek", "ngentot",
+        "fuck", "fucking", "shit", "bitch", "asshole", "dick"
+    ]);
+
+    function normalizeWord(word) {
+        return word
+            .toLowerCase()
+            .replace(/[@4]/g, "a")
+            .replace(/[3]/g, "e")
+            .replace(/[1!|]/g, "i")
+            .replace(/[0]/g, "o")
+            .replace(/(.)\1+/g, "$1");
+    }
+
+    function censorText(value) {
+        return String(value || "").replace(/[A-Za-zÀ-ÿ0-9@!|]+/g, word => {
+            const normalized = normalizeWord(word);
+            return bannedWords.has(normalized) ? "*".repeat(word.length) : word;
+        });
+    }
+
+    document.addEventListener("submit", event => {
+        const form = event.target;
+        if (!form || form.id !== "commentForm") return;
+
+        const nameInput = document.getElementById("commentName");
+        const textInput = document.getElementById("commentText");
+        const status = document.getElementById("commentStatus");
+
+        if (!textInput) return;
+
+        const originalName = nameInput ? nameInput.value : "";
+        const originalText = textInput.value;
+        const cleanName = censorText(originalName);
+        const cleanText = censorText(originalText);
+        const wasCensored = cleanName !== originalName || cleanText !== originalText;
+
+        if (nameInput) nameInput.value = cleanName;
+        textInput.value = cleanText;
+
+        if (wasCensored && status) {
+            status.textContent = "Beberapa kata telah disensor otomatis sebelum komentar dikirim.";
+        }
+    }, true);
+
+    window.GalaXXICensor = { censorText, bannedWords };
 })();
