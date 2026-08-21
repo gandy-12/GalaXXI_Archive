@@ -143,8 +143,8 @@ var albums = [
         photos: 0,
         unlimited: false,
         featured: false,
-        cover: "assets/covers/.JPG",
-        covers: ["assets/covers/.JPG", "assets/covers/.JPG", "assets/covers/.JPG", "assets/covers/.JPG", "assets/covers/.JPG"],
+        cover: "assets/covers/lb1.JPG",
+        covers: ["assets/covers/lb1.JPG", "assets/covers/lb2.JPG", "assets/covers/lb3.JPG", "assets/covers/lb4.JPG", "assets/covers/lb5.JPG","assets/covers/lb6.JPG","assets/covers/lb7.JPG","assets/covers/lb8.JPG"],
         link: "https://drive.google.com/drive/folders/1fOx6FNRHSVk1fxuLy_hwNYG10eJdAb1x?usp=sharing",
         access: "public"
     },
@@ -154,12 +154,12 @@ var albums = [
         category: "Angkatan",
         description: "Our last walking at cendekia.",
         date: "18 Agustus 2026",
-        photos: 0,
+        photos: 342,
         unlimited: false,
         featured: false,
         cover: "assets/covers/.JPG",
         covers: ["assets/covers/.JPG", "assets/covers/.JPG", "assets/covers/.JPG", "assets/covers/.JPG", "assets/covers/.JPG"],
-        link: "https://drive.google.com/drive/folders/14fUf4_BjTO8iHg8i6DTiQLE8cAT8Dgib?usp=sharing",
+        link: "https://drive.google.com/drive/folders/1fOx6FNRHSVk1fxuLy_hwNYG10eJdAb1x?usp=drive_link",
         access: "public"
     },
     {
@@ -171,8 +171,8 @@ var albums = [
         photos: 0,
         unlimited: false,
         featured: false,
-        cover: "assets/covers/.JPG",
-        covers: ["assets/covers/.JPG", "assets/covers/.JPG", "assets/covers/.JPG", "assets/covers/.JPG", "assets/covers/.JPG"],
+        cover: "assets/covers/mn1.JPG",
+        covers: ["assets/covers/mn1.JPG", "assets/covers/mn2.JPG", "assets/covers/mn3.JPG", "assets/covers/mn4.JPG","assets/covers/mn5.JPG","assets/covers/mn6.JPG","assets/covers/mn7.JPG","assets/covers/mn8.JPG","assets/covers/mn9.JPG","assets/covers/mn10.JPG","assets/covers/mn11.JPG", "assets/covers/mn12.JPG"],
         link: "https://drive.google.com/drive/folders/14fUf4_BjTO8iHg8i6DTiQLE8cAT8Dgib?usp=sharing",
         access: "public"
     },
