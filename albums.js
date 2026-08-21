@@ -89,8 +89,8 @@ var albums = [
         photos: 0,
         unlimited: false,
         featured: false,
-        cover: "assets/covers/pr a.JPG",
-        covers: ["assets/covers/pr a.JPG"],
+        cover: "assets/covers/.JPG",
+        covers: ["assets/covers/.JPG"],
         link: "https://drive.google.com/drive/folders/1Nx5mXzFnwk3QPumpugaf4ysqUMCuzsyw?usp=drive_link",
         access: "public"
     },
@@ -157,8 +157,8 @@ var albums = [
         photos: 342,
         unlimited: false,
         featured: false,
-        cover: "assets/covers/.JPG",
-        covers: ["assets/covers/.JPG", "assets/covers/.JPG", "assets/covers/.JPG", "assets/covers/.JPG", "assets/covers/.JPG"],
+        cover: "assets/covers/wk1.JPG",
+        covers: ["assets/covers/wk2.JPG", "assets/covers/wk3.JPG", "assets/covers/wk4.JPG", "assets/covers/wk5.JPG","assets/covers/wk6.JPG","assets/covers/wk7.JPG","assets/covers/wk8.JPG", "assets/covers/wk9.JPG"],
         links: [
             {
                 title: "Walking Part 1",
