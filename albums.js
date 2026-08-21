@@ -159,7 +159,20 @@ var albums = [
         featured: false,
         cover: "assets/covers/.JPG",
         covers: ["assets/covers/.JPG", "assets/covers/.JPG", "assets/covers/.JPG", "assets/covers/.JPG", "assets/covers/.JPG"],
-        link: "https://drive.google.com/drive/folders/1fOx6FNRHSVk1fxuLy_hwNYG10eJdAb1x?usp=drive_link",
+        links: [
+            {
+                title: "Walking Part 1",
+                link: "https://drive.google.com/drive/folders/1qkd7hzTsb9sFxknt33Ju1bfWFL7da2L4?usp=drive_link"
+            },
+            {
+                title: "Walking Part 2",
+                link: "https://drive.google.com/drive/folders/1k_DWYAVJqakIzYRZyqrZ2RDaRqCah17L?usp=sharing"
+            },
+            {
+                title: "Walking Part 3",
+                link: "https://drive.google.com/drive/folders/14fUf4_BjTO8iHg8i6DTiQLE8cAT8Dgib?usp=sharing"
+            }
+        ],
         access: "public"
     },
     {
@@ -208,129 +221,3 @@ var albums = [
 
 /* Pastikan data tersedia untuk script lain. */
 window.albums = albums;
-
-/*==================================================
-    ALBUM ACCESS BADGES
-==================================================*/
-
-(function () {
-    const style = document.createElement("style");
-    style.textContent = `
-        .album-content { position: relative; }
-        .album-access-badge {
-            position: absolute;
-            top: 22px;
-            right: 22px;
-            display: inline-flex;
-            align-items: center;
-            gap: 7px;
-            max-width: calc(100% - 44px);
-            padding: 8px 11px;
-            border: 1px solid rgba(255,255,255,.13);
-            border-radius: 999px;
-            background: rgba(15,23,42,.82);
-            backdrop-filter: blur(12px);
-            color: #cbd5e1;
-            font-size: .72rem;
-            font-weight: 700;
-            line-height: 1;
-            z-index: 2;
-        }
-        .album-access-badge.access-belajar { color:#dbeafe; border-color:rgba(96,165,250,.35); background:rgba(30,58,138,.28); }
-        .album-access-badge.access-public { color:#d1fae5; border-color:rgba(52,211,153,.3); background:rgba(6,78,59,.25); }
-        .album-access-badge .access-icon { font-size:.95rem; line-height:1; }
-        .album-cover { height:auto !important; aspect-ratio:16 / 9; }
-        .cover-image { width:100%; height:100%; object-fit:cover; }
-        .cover-placeholder > i, .cover-placeholder > svg { display:none !important; }
-        @media(max-width:560px){.album-access-badge{top:18px;right:18px;padding:7px 10px;font-size:.68rem;}}
-        @media(max-width:760px){.album-grid{grid-template-columns:1fr !important;}}
-    `;
-    document.head.appendChild(style);
-
-    const accessMap = {
-        belajar: { icon: "🎓", label: "Akun belajar.id" },
-        public: { icon: "🌐", label: "Akun bebas" }
-    };
-
-    function addBadges() {
-        document.querySelectorAll(".album-card").forEach(card => {
-            const title = card.querySelector(".album-title")?.textContent?.trim();
-            const album = window.albums.find(item => item.title === title);
-            const content = card.querySelector(".album-content");
-            if (!album || !content || !album.access || content.querySelector(".album-access-badge")) return;
-            const access = accessMap[album.access];
-            if (!access) return;
-
-            const badge = document.createElement("span");
-            badge.className = `album-access-badge access-${album.access}`;
-            badge.innerHTML = `<span class="access-icon" aria-hidden="true">${access.icon}</span><span>${access.label}</span>`;
-            badge.title = album.access === "belajar" ? "Link ini memerlukan akun belajar.id" : "Link ini dapat dibuka dengan akun bebas";
-            content.appendChild(badge);
-        });
-    }
-
-    document.addEventListener("DOMContentLoaded", () => {
-        const container = document.getElementById("albumContainer");
-        if (!container) return;
-        new MutationObserver(addBadges).observe(container, { childList:true, subtree:true });
-        addBadges();
-    });
-})();
-
-/*==================================================
-    COMMENT PROFANITY FILTER
-    Komentar disensor sebelum dikirim ke Supabase.
-==================================================*/
-
-(function () {
-    const bannedWords = new Set([
-        "anjing", "bangsat", "bajingan", "kampret",
-        "goblok", "goblog", "tolol", "bego", "idiot",
-        "jancok", "keparat", "setan", "tai",
-        "kontol", "memek", "ngentot",
-        "fuck", "fucking", "shit", "bitch", "asshole", "dick"
-    ]);
-
-    function normalizeWord(word) {
-        return word
-            .toLowerCase()
-            .replace(/[@4]/g, "a")
-            .replace(/[3]/g, "e")
-            .replace(/[1!|]/g, "i")
-            .replace(/[0]/g, "o")
-            .replace(/(.)\1+/g, "$1");
-    }
-
-    function censorText(value) {
-        return String(value || "").replace(/[A-Za-zÀ-ÿ0-9@!|]+/g, word => {
-            const normalized = normalizeWord(word);
-            return bannedWords.has(normalized) ? "*".repeat(word.length) : word;
-        });
-    }
-
-    document.addEventListener("submit", event => {
-        const form = event.target;
-        if (!form || form.id !== "commentForm") return;
-
-        const nameInput = document.getElementById("commentName");
-        const textInput = document.getElementById("commentText");
-        const status = document.getElementById("commentStatus");
-
-        if (!textInput) return;
-
-        const originalName = nameInput ? nameInput.value : "";
-        const originalText = textInput.value;
-        const cleanName = censorText(originalName);
-        const cleanText = censorText(originalText);
-        const wasCensored = cleanName !== originalName || cleanText !== originalText;
-
-        if (nameInput) nameInput.value = cleanName;
-        textInput.value = cleanText;
-
-        if (wasCensored && status) {
-            status.textContent = "Beberapa kata telah disensor otomatis sebelum komentar dikirim.";
-        }
-    }, true);
-
-    window.GalaXXICensor = { censorText, bannedWords };
-})();
