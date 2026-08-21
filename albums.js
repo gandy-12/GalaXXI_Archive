@@ -206,14 +206,14 @@ var albums = [
         id: 14,
         title: "Pelantikan Sispala 2026",
         category: "Organisasi",
-        description: "Spectacular pawai Cendekia at Maninjau.",
+        description: "The excitement of exploring nature with the Sispala during the 2026 membership induction ceremony.",
         date: "16 Mei 2026",
         photos: 0,
         unlimited: false,
         featured: false,
-        cover: "assets/covers/.JPG",
-        covers: ["assets/covers/.JPG", "assets/covers/.JPG", "assets/covers/.JPG", "assets/covers/.JPG", "assets/covers/.JPG"],
-        link: "https://drive.google.com/drive/folders/14fUf4_BjTO8iHg8i6DTiQLE8cAT8Dgib?usp=sharing",
+        cover: "assets/covers/ss1.JPG",
+        covers: ["assets/covers/ss1.JPG", "assets/covers/ss2.JPG", "assets/covers/ss3.JPG", "assets/covers/ss4.JPG", "assets/covers/.JPG"],
+        link: "https://https://drive.google.com/drive/folders/15bMMpZ1kc_xXtNB6gcX8xxcmZcIbHiR_?usp=sharing",
         access: "public"
     }
 ];
