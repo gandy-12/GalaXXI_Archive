@@ -67,3 +67,57 @@ window.albums = albums;
         setTimeout(setupBadges, 0); updateFooterCredit();
     }
 })();
+
+/* Perbaikan akses link: selalu cocokkan kartu dengan album berdasarkan judul/ID data,
+   sehingga perubahan urutan atau filter tidak bisa menggeser link ke album sebelumnya. */
+(function () {
+    function fixAlbumLinks() {
+        var container = document.getElementById("albumContainer");
+        if (!container) return;
+
+        container.querySelectorAll(".album-card").forEach(function (card) {
+            var titleEl = card.querySelector(".album-title");
+            var button = card.querySelector(".open-button");
+            if (!titleEl || !button) return;
+
+            var album = albums.find(function (item) {
+                return item.title === titleEl.textContent.trim();
+            });
+            if (!album) return;
+
+            button.dataset.albumId = String(album.id);
+            button.onclick = function (event) {
+                event.preventDefault();
+                var selected = albums.find(function (item) {
+                    return String(item.id) === button.dataset.albumId;
+                });
+                if (!selected) return;
+
+                if (Array.isArray(selected.links) && selected.links.length) {
+                    if (window.App && typeof App.openAlbumLinks === "function") {
+                        App.openAlbumLinks(selected);
+                    }
+                } else if (selected.link) {
+                    window.open(selected.link, "_blank", "noopener,noreferrer");
+                }
+            };
+        });
+    }
+
+    function startFix() {
+        fixAlbumLinks();
+        var container = document.getElementById("albumContainer");
+        if (!container) return;
+        new MutationObserver(function () {
+            requestAnimationFrame(fixAlbumLinks);
+        }).observe(container, { childList:true, subtree:true });
+    }
+
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", function () {
+            setTimeout(startFix, 50);
+        });
+    } else {
+        setTimeout(startFix, 50);
+    }
+})();
