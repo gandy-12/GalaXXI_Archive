@@ -1,6 +1,6 @@
 /*==================================================
     GalaXXI Archive
-    Version 1.6.2
+    Version 1.6.3
 ==================================================*/
 
 "use strict";
@@ -104,6 +104,80 @@ const App = {
         return album.cover ? [album.cover] : [];
     },
 
+    hasMultipleLinks(album) {
+        return Array.isArray(album?.links) && album.links.length > 0;
+    },
+
+    openAlbumLinks(album) {
+        if (!this.hasMultipleLinks(album)) {
+            if (album?.link) window.open(album.link, "_blank", "noopener,noreferrer");
+            return;
+        }
+
+        const existing = document.getElementById("albumLinkModal");
+        existing?.remove();
+
+        const modal = document.createElement("div");
+        modal.id = "albumLinkModal";
+        modal.className = "album-link-modal";
+        modal.innerHTML = `
+            <div class="album-link-modal-backdrop"></div>
+            <div class="album-link-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="albumLinkModalTitle">
+                <button type="button" class="album-link-modal-close" aria-label="Tutup">×</button>
+                <div class="album-link-modal-icon">📂</div>
+                <h3 id="albumLinkModalTitle">Pilih Album</h3>
+                <p>${album.title}</p>
+                <div class="album-link-options"></div>
+            </div>
+        `;
+
+        const style = document.createElement("style");
+        style.textContent = `
+            .album-link-modal{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;font-family:inherit;}
+            .album-link-modal-backdrop{position:absolute;inset:0;background:rgba(2,6,23,.72);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);}
+            .album-link-modal-dialog{position:relative;width:min(100%,420px);padding:28px;border:1px solid rgba(255,255,255,.12);border-radius:24px;background:#0f172a;color:#f8fafc;box-shadow:0 24px 70px rgba(0,0,0,.45);animation:albumModalIn .2s ease-out;}
+            .album-link-modal-icon{font-size:1.9rem;margin-bottom:8px;}
+            .album-link-modal-dialog h3{margin:0;font-size:1.35rem;}
+            .album-link-modal-dialog p{margin:6px 0 22px;color:#94a3b8;font-size:.9rem;}
+            .album-link-modal-close{position:absolute;top:14px;right:16px;width:34px;height:34px;border:0;border-radius:50%;background:rgba(255,255,255,.08);color:#e2e8f0;font-size:1.45rem;line-height:1;cursor:pointer;}
+            .album-link-options{display:grid;gap:10px;}
+            .album-link-option{display:flex;align-items:center;gap:12px;width:100%;padding:14px 16px;border:1px solid rgba(255,255,255,.1);border-radius:16px;background:rgba(255,255,255,.04);color:#f8fafc;text-decoration:none;font-weight:700;transition:transform .18s ease,background .18s ease,border-color .18s ease;}
+            .album-link-option:hover{transform:translateY(-2px);background:rgba(255,255,255,.08);border-color:rgba(148,163,184,.45);}
+            .album-link-option span:first-child{font-size:1.2rem;}
+            @keyframes albumModalIn{from{opacity:0;transform:translateY(12px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+            body.light .album-link-modal-dialog{background:#fff;color:#0f172a;}
+            body.light .album-link-modal-dialog p{color:#64748b;}
+            body.light .album-link-modal-close{background:#eef2f7;color:#334155;}
+            body.light .album-link-option{background:#f8fafc;color:#0f172a;border-color:#e2e8f0;}
+            body.light .album-link-option:hover{background:#eef2f7;border-color:#cbd5e1;}
+        `;
+        modal.appendChild(style);
+
+        const options = modal.querySelector(".album-link-options");
+        album.links.forEach((item, index) => {
+            if (!item?.link) return;
+            const option = document.createElement("a");
+            option.className = "album-link-option";
+            option.href = item.link;
+            option.target = "_blank";
+            option.rel = "noopener noreferrer";
+            option.innerHTML = `<span>📁</span><span>${item.title || `Walking Part ${index + 1}`}</span>`;
+            options.appendChild(option);
+        });
+
+        const close = () => modal.remove();
+        modal.querySelector(".album-link-modal-close")?.addEventListener("click", close);
+        modal.querySelector(".album-link-modal-backdrop")?.addEventListener("click", close);
+        document.addEventListener("keydown", function onKeydown(event) {
+            if (event.key === "Escape") {
+                close();
+                document.removeEventListener("keydown", onKeydown);
+            }
+        });
+
+        document.body.appendChild(modal);
+    },
+
     renderAlbums() {
         if (!this.dom.albumContainer || !this.dom.albumTemplate) return;
         this.dom.albumContainer.innerHTML = "";
@@ -156,19 +230,41 @@ const App = {
             if (category) category.textContent = album.category;
             if (date) date.textContent = album.date;
             if (photoCount) photoCount.textContent = this.getPhotoLabel(album);
-            if (button) { button.href = album.link; button.target = "_blank"; button.rel = "noopener noreferrer"; }
-            if (covers.length <= 1) { prevButton?.classList.add("hidden-cover-control"); nextButton?.classList.add("hidden-cover-control"); }
+            if (button) {
+                button.target = "_blank";
+                button.rel = "noopener noreferrer";
+                if (this.hasMultipleLinks(album)) {
+                    button.href = "#";
+                    button.addEventListener("click", event => {
+                        event.preventDefault();
+                        this.openAlbumLinks(album);
+                    });
+                } else {
+                    button.href = album.link || "#";
+                }
+            }
+            if (covers.length <= 1) {
+                prevButton?.classList.add("hidden-cover-control");
+                nextButton?.classList.add("hidden-cover-control");
+            }
 
             prevButton?.addEventListener("click", event => { event.preventDefault(); event.stopPropagation(); showCover(currentIndex - 1); });
             nextButton?.addEventListener("click", event => { event.preventDefault(); event.stopPropagation(); showCover(currentIndex + 1); });
 
             if (coverBox && covers.length > 1) {
                 let startX = 0, startY = 0;
-                coverBox.addEventListener("touchstart", event => { const touch = event.changedTouches[0]; startX = touch.clientX; startY = touch.clientY; }, { passive: true });
+                coverBox.addEventListener("touchstart", event => {
+                    const touch = event.changedTouches[0];
+                    startX = touch.clientX;
+                    startY = touch.clientY;
+                }, { passive: true });
                 coverBox.addEventListener("touchend", event => {
                     const touch = event.changedTouches[0];
-                    const deltaX = touch.clientX - startX, deltaY = touch.clientY - startY;
-                    if (Math.abs(deltaX) > 45 && Math.abs(deltaX) > Math.abs(deltaY)) showCover(currentIndex + (deltaX < 0 ? 1 : -1));
+                    const deltaX = touch.clientX - startX;
+                    const deltaY = touch.clientY - startY;
+                    if (Math.abs(deltaX) > 45 && Math.abs(deltaX) > Math.abs(deltaY)) {
+                        showCover(currentIndex + (deltaX < 0 ? 1 : -1));
+                    }
                 }, { passive: true });
                 coverBox.addEventListener("dragstart", event => event.preventDefault());
             }
@@ -188,8 +284,27 @@ const App = {
         if (this.dom.featuredDescription) this.dom.featuredDescription.textContent = featured.description;
         if (this.dom.featuredDate) this.dom.featuredDate.textContent = featured.date;
         if (this.dom.featuredPhotos) this.dom.featuredPhotos.textContent = this.getPhotoLabel(featured);
-        if (this.dom.featuredLink) { this.dom.featuredLink.href = featured.link; this.dom.featuredLink.target = "_blank"; this.dom.featuredLink.rel = "noopener noreferrer"; }
-        if (this.dom.driveStat) { this.dom.driveStat.href = "drive.html"; this.dom.driveStat.removeAttribute("target"); this.dom.driveStat.title = "Lihat daftar seluruh Google Drive album"; this.dom.driveStat.style.cursor = "pointer"; }
+        if (this.dom.featuredLink) {
+            if (this.hasMultipleLinks(featured)) {
+                this.dom.featuredLink.href = "#";
+                this.dom.featuredLink.target = "";
+                this.dom.featuredLink.onclick = event => {
+                    event.preventDefault();
+                    this.openAlbumLinks(featured);
+                };
+            } else {
+                this.dom.featuredLink.href = featured.link || "#";
+                this.dom.featuredLink.target = "_blank";
+                this.dom.featuredLink.rel = "noopener noreferrer";
+                this.dom.featuredLink.onclick = null;
+            }
+        }
+        if (this.dom.driveStat) {
+            this.dom.driveStat.href = "drive.html";
+            this.dom.driveStat.removeAttribute("target");
+            this.dom.driveStat.title = "Lihat daftar seluruh Google Drive album";
+            this.dom.driveStat.style.cursor = "pointer";
+        }
     },
 
     updateStatistics() {
@@ -217,7 +332,10 @@ const App = {
         const increment = Math.max(1, Math.ceil(target / 80));
         const timer = setInterval(() => {
             current += increment;
-            if (current >= target) { current = target; clearInterval(timer); }
+            if (current >= target) {
+                current = target;
+                clearInterval(timer);
+            }
             element.textContent = this.format(current);
         }, 15);
     },
@@ -256,7 +374,10 @@ const App = {
             if (this.dom.backTop) this.dom.backTop.classList.toggle("show", scrollTop > 400);
         });
         this.dom.backTop?.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
-        this.dom.searchInput?.addEventListener("input", event => { this.state.keyword = event.target.value.trim(); this.filterAlbums(); });
+        this.dom.searchInput?.addEventListener("input", event => {
+            this.state.keyword = event.target.value.trim();
+            this.filterAlbums();
+        });
         this.dom.categoryWrapper?.addEventListener("click", event => {
             const button = event.target.closest(".category");
             if (!button) return;
@@ -286,7 +407,9 @@ const App = {
             card.setAttribute("tabindex", "0");
             card.setAttribute("aria-label", "Lihat daftar album");
             card.addEventListener("click", goToAlbumList);
-            card.addEventListener("keydown", event => { if (event.key === "Enter" || event.key === " ") goToAlbumList(event); });
+            card.addEventListener("keydown", event => {
+                if (event.key === "Enter" || event.key === " ") goToAlbumList(event);
+            });
         });
         this.dom.themeToggle?.addEventListener("click", () => {
             document.body.classList.toggle("light");
@@ -298,7 +421,12 @@ const App = {
 
     initObserver() {
         if (!("IntersectionObserver" in window)) return;
-        const observer = new IntersectionObserver(entries => entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add("active"); }), { threshold: 0.15 });
+        const observer = new IntersectionObserver(
+            entries => entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add("active");
+            }),
+            { threshold: 0.15 }
+        );
         document.querySelectorAll(".reveal").forEach(element => observer.observe(element));
     }
 };
