@@ -22,7 +22,7 @@ var albums = [
     { id:8, title:"GalaXXI P5; Market Day", category:"Sekolah", description:"Themost unexpected actifity.", date:"15 Juni 2026", photos:103, unlimited:false, featured:false, cover:"assets/covers/p51.JPG", covers:["assets/covers/p51.JPG","assets/covers/p52.JPG","assets/covers/p53.JPG","assets/covers/p54.JPG","assets/covers/p55.JPG","assets/covers/p56.JPG"], link:"https://drive.google.com/drive/folders/1ljKpjsU-VhX9kZTTGqYlCD9e0JxYH5Ay?usp=sharing" },
     { id:9, title:"Before Cendekia's Pawai", category:"Sekolah", description:"Asal usul foto keren pawai cende.", date:"13 Agustus 2026", photos:98, unlimited:false, featured:false, cover:"assets/covers/pw1.JPG", covers:["assets/covers/pw1.JPG","assets/covers/pw2.JPG","assets/covers/pw3.JPG","assets/covers/pw4.JPG","assets/covers/pw5.JPG"], link:"https://drive.google.com/drive/folders/1JdO2LUDSLTzUWUpYyXo09fJyhpodp6l8?usp=sharing" },
     { id:10, title:"Pawai Cendekia at Lubuk Basung", category:"Sekolah", description:"Wonderful performance cendekia at lubuk basung.", date:"18 Agustus 2026", photos:385, unlimited:false, featured:false, cover:"assets/covers/lb1.JPG", covers:["assets/covers/lb1.JPG","assets/covers/lb2.JPG","assets/covers/lb3.JPG","assets/covers/lb4.JPG","assets/covers/lb5.JPG","assets/covers/lb6.JPG","assets/covers/lb7.JPG","assets/covers/lb8.JPG"], link:"https://drive.google.com/drive/folders/1fOx6FNRHSVk1fxuLy_hwNYG10eJdAb1x?usp=sharing", access:"public" },
-    { id:11, title:"Last walking GalaXXI", category:"Angkatan", description:"Our last walking at cendekia.", date:"18 Agustus 2026", photos:342, unlimited:false, featured:false, cover:"assets/covers/wk1.JPG", covers:["assets/covers/wk2.JPG","assets/covers/wk3.JPG","assets/covers/wk4.JPG","assets/covers/wk5.JPG","assets/covers/wk6.JPG","assets/covers/wk7.JPG","assets/covers/wk8.JPG","assets/covers/wk9.JPG"], links:[{title:"Walking Part 1",link:"https://drive.google.com/drive/folders/1qkd7hzTsb9sFxknt33Ju1bfWFL7da2L4?usp=drive_link"},{title:"Walking Part 2",link:"https://drive.google.com/drive/folders/1k_DWYAVJqakIzYRZyqrZ2RDaRqCah17L?usp=sharing"},{title:"Walking Part 3",link:"https://drive.google.com/drive/folders/14fUf4_BjTO8iHg8i6DTiQLE8cAT8Dgib?usp=sharing"},{title:"Walking Part 4",link:"https://drive.google.com/drive/folders/19SM-jsV_CoUuz6WQSetgFaE8cxLRiwGQ"}] },
+    { id:11, title:"Last walking GalaXXI", category:"Angkatan", description:"Our last walking at cendekia.", date:"18 Agustus 2026", photos:342, unlimited:false, featured:false, cover:"assets/covers/wk1.JPG", covers:["assets/covers/wk2.JPG","assets/covers/wk3.JPG","assets/covers/wk4.JPG","assets/covers/wk5.JPG","assets/covers/wk6.JPG","assets/covers/wk7.JPG","assets/covers/wk8.JPG","assets/covers/wk9.JPG"], links:[{title:"Walking Part 1",link:"https://drive.google.com/drive/folders/14fUf4_BjTO8iHg8i6DTiQLE8cAT8Dgib?usp=drive_link"},{title:"Walking Part 2",link:"https://drive.google.com/drive/folders/1k_DWYAVJqakIzYRZyqrZ2RDaRqCah17L?usp=drive_link"},{title:"Walking Part 3",link:"https://drive.google.com/drive/folders/1qkd7hzTsb9sFxknt33Ju1bfWFL7da2L4?usp=drive_link"},{title:"Walking Part 4",link:"https://drive.google.com/drive/folders/19SM-jsV_CoUuz6WQSetgFaE8cxLRiwGQ"}] },
     { id:12, title:"Pawai Cendekia at Maninjau", category:"Sekolah", description:"Spectacular pawai Cendekia at Maninjau.", date:"20 Agustus 2026", photos:274, unlimited:false, featured:false, cover:"assets/covers/mn1.JPG", covers:["assets/covers/mn1.JPG","assets/covers/mn2.JPG","assets/covers/mn3.JPG","assets/covers/mn4.JPG","assets/covers/mn5.JPG","assets/covers/mn6.JPG","assets/covers/mn7.JPG","assets/covers/mn8.JPG","assets/covers/mn9.JPG","assets/covers/mn10.JPG","assets/covers/mn11.JPG","assets/covers/mn12.JPG"], link:"https://drive.google.com/drive/folders/17XFmsEJWzuGq97ALH4JKM3G8HJ75IFMX?usp=sharing", access:"public" },
     { id:13, title:"Upacara Bendera", category:"Sekolah", description:"Flag Ceremony SMAN Agam Cendekia (foto upacara hanya bertahan 1 bulan, karena drive terus dibersihkan).", date:"July - Agustus 2026", photos:208, unlimited:false, featured:false, cover:"assets/covers/.JPG", covers:["assets/covers/.JPG","assets/covers/.JPG","assets/covers/.JPG","assets/covers/.JPG","assets/covers/.JPG"], link:"https://drive.google.com/drive/folders/19LmHetvG1CTdUk9c6OvxDmSphPoKeYoq?usp=sharing", access:"public" },
     { id:14, title:"Pelantikan Sispala 2026", category:"Organisasi", description:"The excitement of exploring nature with the Sispala during the 2026 membership induction ceremony.", date:"16 Mei 2026", photos:589, unlimited:false, featured:false, cover:"assets/covers/ss1.JPG", covers:["assets/covers/ss1.JPG","assets/covers/ss2.JPG","assets/covers/ss3.JPG","assets/covers/ss4.JPG","assets/covers/.JPG"], link:"https://drive.google.com/drive/folders/15bMMpZ1kc_xXtNB6gcX8xxcmZcIbHiR_?usp=sharing", access:"public" }
@@ -68,56 +68,35 @@ window.albums = albums;
     }
 })();
 
-/* Perbaikan akses link: selalu cocokkan kartu dengan album berdasarkan judul/ID data,
-   sehingga perubahan urutan atau filter tidak bisa menggeser link ke album sebelumnya. */
 (function () {
     function fixAlbumLinks() {
         var container = document.getElementById("albumContainer");
         if (!container) return;
-
         container.querySelectorAll(".album-card").forEach(function (card) {
             var titleEl = card.querySelector(".album-title");
             var button = card.querySelector(".open-button");
             if (!titleEl || !button) return;
-
-            var album = albums.find(function (item) {
-                return item.title === titleEl.textContent.trim();
-            });
+            var album = albums.find(function (item) { return item.title === titleEl.textContent.trim(); });
             if (!album) return;
-
             button.dataset.albumId = String(album.id);
             button.onclick = function (event) {
                 event.preventDefault();
-                var selected = albums.find(function (item) {
-                    return String(item.id) === button.dataset.albumId;
-                });
+                var selected = albums.find(function (item) { return String(item.id) === button.dataset.albumId; });
                 if (!selected) return;
-
                 if (Array.isArray(selected.links) && selected.links.length) {
-                    if (window.App && typeof App.openAlbumLinks === "function") {
-                        App.openAlbumLinks(selected);
-                    }
+                    if (window.App && typeof App.openAlbumLinks === "function") App.openAlbumLinks(selected);
                 } else if (selected.link) {
                     window.open(selected.link, "_blank", "noopener,noreferrer");
                 }
             };
         });
     }
-
     function startFix() {
         fixAlbumLinks();
         var container = document.getElementById("albumContainer");
         if (!container) return;
-        new MutationObserver(function () {
-            requestAnimationFrame(fixAlbumLinks);
-        }).observe(container, { childList:true, subtree:true });
+        new MutationObserver(function () { requestAnimationFrame(fixAlbumLinks); }).observe(container, { childList:true, subtree:true });
     }
-
-    if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", function () {
-            setTimeout(startFix, 50);
-        });
-    } else {
-        setTimeout(startFix, 50);
-    }
+    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", function () { setTimeout(startFix, 50); });
+    else setTimeout(startFix, 50);
 })();
