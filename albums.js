@@ -27,29 +27,17 @@ var albums = [
     { id:13, title:"Upacara Bendera", category:"Sekolah", description:"Flag Ceremony SMAN Agam Cendekia (foto upacara hanya bertahan 1 bulan, karena drive terus dibersihkan).", date:"July - Agustus 2026", photos:208, unlimited:false, featured:false, cover:"assets/covers/.JPG", covers:["assets/covers/.JPG","assets/covers/.JPG","assets/covers/.JPG","assets/covers/.JPG","assets/covers/.JPG"], link:"https://drive.google.com/drive/folders/14fUf4_BjTO8iHg8i6DTiQLE8cAT8Dgib?usp=sharing", access:"public" },
     { id:14, title:"Pelantikan Sispala 2026", category:"Organisasi", description:"The excitement of exploring nature with the Sispala during the 2026 membership induction ceremony.", date:"16 Mei 2026", photos:589, unlimited:false, featured:false, cover:"assets/covers/ss1.JPG", covers:["assets/covers/ss1.JPG","assets/covers/ss2.JPG","assets/covers/ss3.JPG","assets/covers/ss4.JPG","assets/covers/.JPG"], link:"https://drive.google.com/drive/folders/15bMMpZ1kc_xXtNB6gcX8xxcmZcIbHiR_?usp=sharing", access:"public" }
 ];
-
 window.albums = albums;
-
-/* ACCESS BADGES
-   Menampilkan badge pada setiap kartu album:
-   default / tanpa access = belajar.id 🎓
-   access: "public"      = akun bebas 🌐
-*/
 (function () {
     function addBadges() {
         var container = document.getElementById("albumContainer");
         if (!container) return;
-
         var cards = container.querySelectorAll(".album-card");
-        var filtered = window.App && App.state && Array.isArray(App.state.filteredAlbums)
-            ? App.state.filteredAlbums
-            : albums;
-
+        var filtered = window.App && App.state && Array.isArray(App.state.filteredAlbums) ? App.state.filteredAlbums : albums;
         cards.forEach(function (card, index) {
             var content = card.querySelector(".album-content");
             var album = filtered[index];
             if (!content || !album || content.querySelector(".album-access-badge")) return;
-
             var isPublic = album.access === "public";
             var badge = document.createElement("span");
             badge.className = "album-access-badge " + (isPublic ? "access-public" : "access-belajar");
@@ -58,27 +46,24 @@ window.albums = albums;
             content.appendChild(badge);
         });
     }
-
     function setupBadges() {
         var container = document.getElementById("albumContainer");
         if (!container) return;
-
         var style = document.createElement("style");
         style.id = "album-access-badge-style";
         if (!document.getElementById(style.id)) {
             style.textContent = ".album-content{position:relative}.album-access-badge{position:absolute;top:18px;right:18px;display:inline-flex;align-items:center;gap:6px;padding:7px 10px;border:1px solid rgba(255,255,255,.12);border-radius:999px;background:rgba(15,23,42,.62);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);font-size:.72rem;font-weight:700;line-height:1;color:#e2e8f0;white-space:nowrap;box-shadow:0 6px 18px rgba(0,0,0,.12)}.album-access-badge.access-public{color:#93c5fd}.album-access-badge.access-belajar{color:#fcd34d}@media(max-width:560px){.album-access-badge{top:15px;right:15px;padding:6px 8px;font-size:.67rem}}";
             document.head.appendChild(style);
         }
-
         addBadges();
-        new MutationObserver(function () {
-            requestAnimationFrame(addBadges);
-        }).observe(container, { childList:true, subtree:true });
+        new MutationObserver(function () { requestAnimationFrame(addBadges); }).observe(container, { childList:true, subtree:true });
     }
-
+    function updateFooterCredit() {
+        document.querySelectorAll(".footer-bottom span").forEach(function (el) { el.textContent = "Made by gamdih"; });
+    }
     if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", function () { setTimeout(setupBadges, 0); });
+        document.addEventListener("DOMContentLoaded", function () { setTimeout(setupBadges, 0); updateFooterCredit(); });
     } else {
-        setTimeout(setupBadges, 0);
+        setTimeout(setupBadges, 0); updateFooterCredit();
     }
 })();
