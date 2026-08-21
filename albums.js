@@ -7,9 +7,8 @@
 
 /*
     access:
-    - "belajar" = Link dengan akun belajar.id 🎓
-    - "public"  = Link dengan akun bebas 🌐
-    - tidak diisi = badge tidak ditampilkan
+    - tidak diisi      = Link dengan akun belajar.id 🎓 (default)
+    - "public"        = Link dengan akun bebas 🌐
 */
 
 var albums = [
