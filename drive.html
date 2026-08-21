@@ -30,96 +30,50 @@
         .drive-back { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 34px; color: #cbd5e1; text-decoration: none; }
         .drive-back:hover { color: white; }
         .drive-empty { color: #94a3b8; text-align: center; padding: 50px; }
-        @media (max-width: 650px) {
-            .drive-page { padding-top: 55px; }
-            .drive-item { align-items: flex-start; }
-            .drive-open { padding: 10px 12px; font-size: .85rem; }
-            .drive-number { flex-basis: 42px; width: 42px; height: 42px; }
-        }
-        @media (max-width: 520px) {
-            .drive-item { display: grid; grid-template-columns: 42px 1fr; }
-            .drive-open { grid-column: 1 / -1; justify-content: center; }
-        }
+        @media (max-width: 650px) { .drive-page { padding-top: 55px; } .drive-item { align-items: flex-start; } .drive-open { padding: 10px 12px; font-size: .85rem; } .drive-number { flex-basis: 42px; width: 42px; height: 42px; } }
+        @media (max-width: 520px) { .drive-item { display: grid; grid-template-columns: 42px 1fr; } .drive-open { grid-column: 1 / -1; justify-content: center; } }
     </style>
 </head>
 <body>
-    <div class="background">
-        <div class="aurora aurora-1"></div>
-        <div class="aurora aurora-2"></div>
-        <div class="aurora aurora-3"></div>
-        <div class="noise"></div>
-    </div>
-
-    <header>
-        <nav class="navbar">
-            <a href="index.html" class="logo">
-                <div class="logo-icon"><i data-lucide="images"></i></div>
-                <div class="logo-text"><h2>GalaXXI</h2><span>Archive</span></div>
-            </a>
-            <div class="nav-right">
-                <button id="themeToggle" class="icon-button" aria-label="Dark Mode"><i data-lucide="moon-star"></i></button>
-            </div>
-        </nav>
-    </header>
-
+    <div class="background"><div class="aurora aurora-1"></div><div class="aurora aurora-2"></div><div class="aurora aurora-3"></div><div class="noise"></div></div>
+    <header><nav class="navbar"><a href="index.html" class="logo"><div class="logo-icon"><i data-lucide="images"></i></div><div class="logo-text"><h2>GalaXXI</h2><span>Archive</span></div></a><div class="nav-right"><button id="themeToggle" class="icon-button" aria-label="Dark Mode"><i data-lucide="moon-star"></i></button></div></nav></header>
     <main class="drive-page">
         <a class="drive-back" href="index.html"><i data-lucide="arrow-left"></i> Kembali ke Archive</a>
-
-        <section class="drive-head">
-            <span class="section-badge">☁️ Google Drive</span>
-            <h1>Daftar <span>Album Drive</span></h1>
-            <p>Semua album GalaXXI yang terhubung ke Google Drive. Pilih album untuk langsung membuka folder dokumentasinya.</p>
-        </section>
-
+        <section class="drive-head"><span class="section-badge">☁️ Google Drive</span><h1>Daftar <span>Album Drive</span></h1><p>Semua album GalaXXI yang terhubung ke Google Drive, diurutkan dari dokumentasi paling lama hingga yang terbaru.</p></section>
         <section id="driveList" class="drive-list" aria-live="polite"></section>
     </main>
-
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-brand"><div class="footer-logo"><i data-lucide="images"></i></div><div><h2>GalaXXI Archive</h2><p>Every Memory Has Its Place.</p></div></div>
-            <div class="footer-links"><a href="index.html">Home</a><a href="index.html#albums">Album</a><a href="drive.html">Drive</a></div>
-        </div>
-        <div class="footer-bottom"><p>© 2026 GalaXXI Archive</p><span>Made by gamdih</span></div>
-    </footer>
-
+    <footer class="footer"><div class="footer-content"><div class="footer-brand"><div class="footer-logo"><i data-lucide="images"></i></div><div><h2>GalaXXI Archive</h2><p>Every Memory Has Its Place.</p></div></div><div class="footer-links"><a href="index.html">Home</a><a href="index.html#albums">Album</a><a href="drive.html">Drive</a></div></div><div class="footer-bottom"><p>© 2026 GalaXXI Archive</p><span>Made by gamdih</span></div></footer>
     <script src="albums.js"></script>
     <script>
         "use strict";
-
         const list = document.getElementById("driveList");
-
+        const monthMap = {januari:0,februari:1,maret:2,april:3,mei:4,juni:5,juli:6,agustus:7,september:8,oktober:9,november:10,desember:11,january:0,february:1,march:2,april:3,may:4,june:5,july:6,august:7,september:8,october:9,november:10,december:11};
+        function albumTime(value) {
+            const text = String(value || "").toLowerCase();
+            const yearMatch = text.match(/(20\d{2})/);
+            const year = yearMatch ? Number(yearMatch[1]) : 9999;
+            let month = 0;
+            Object.keys(monthMap).some(name => { if (text.includes(name)) { month = monthMap[name]; return true; } return false; });
+            const dayMatch = text.match(/(?:^|\s)(\d{1,2})(?:\s|-)/);
+            const day = dayMatch ? Number(dayMatch[1]) : 1;
+            return new Date(year, month, day).getTime();
+        }
+        function albumLink(album) {
+            if (album.link) return album.link;
+            if (Array.isArray(album.links) && album.links.length) return album.links[0].link || "#";
+            return "#";
+        }
         if (Array.isArray(albums) && albums.length) {
-            albums.forEach((album, index) => {
+            [...albums].sort((a,b) => albumTime(a.date) - albumTime(b.date)).forEach((album, index) => {
                 const item = document.createElement("article");
                 item.className = "drive-item";
-
-                item.innerHTML = `
-                    <div class="drive-number">${String(index + 1).padStart(2, "0")}</div>
-                    <div class="drive-info">
-                        <h2>${album.title}</h2>
-                        <p>${album.category} • ${album.date}</p>
-                    </div>
-                    <a class="drive-open" href="${album.link}" target="_blank" rel="noopener noreferrer">
-                        Buka Drive <i data-lucide="external-link"></i>
-                    </a>
-                `;
-
+                item.innerHTML = `<div class="drive-number">${String(index + 1).padStart(2, "0")}</div><div class="drive-info"><h2>${album.title}</h2><p>${album.category} • ${album.date}</p></div><a class="drive-open" href="${albumLink(album)}" target="_blank" rel="noopener noreferrer">Buka Drive <i data-lucide="external-link"></i></a>`;
                 list.appendChild(item);
             });
-        } else {
-            list.innerHTML = '<div class="drive-empty">Belum ada album Drive yang tersedia.</div>';
-        }
-
+        } else { list.innerHTML = '<div class="drive-empty">Belum ada album Drive yang tersedia.</div>'; }
         const themeToggle = document.getElementById("themeToggle");
-        themeToggle?.addEventListener("click", () => {
-            document.body.classList.toggle("light");
-            localStorage.setItem("theme", document.body.classList.contains("light") ? "light" : "dark");
-        });
-
-        if (localStorage.getItem("theme") === "light") {
-            document.body.classList.add("light");
-        }
-
+        themeToggle?.addEventListener("click", () => { document.body.classList.toggle("light"); localStorage.setItem("theme", document.body.classList.contains("light") ? "light" : "dark"); });
+        if (localStorage.getItem("theme") === "light") document.body.classList.add("light");
         lucide.createIcons();
     </script>
 </body>
